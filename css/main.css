@@ -248,4 +248,5 @@ p.product-subcat{
 }
 p.product-price{
     font-size: 1.8rem;
+    margin: 0;
 }
