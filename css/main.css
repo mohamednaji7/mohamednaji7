@@ -1,0 +1,251 @@
+html{
+    font-size: 62.5%;
+}
+
+body{
+    margin: 0;
+    font-family: Poppins;
+}
+
+.wrapper{
+    max-width: 1400px;   
+    margin: 0 auto;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: reveal 0.8s ease-out forwards;
+    transform-origin: top;
+}
+@keyframes reveal {
+    from{
+        transform: scaleY(0);
+    }
+    to{
+        transform: scaleY(1);
+    }
+}
+
+nav{
+    margin: 4em;
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 4em;
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    position: relative;
+}
+
+
+nav ul li a.active::before{
+    position: absolute;
+    content: "";
+    width: 37%;
+    border-bottom: 2px solid black;
+    bottom: -5px; 
+}
+
+
+
+nav ul li a::before{
+    position: absolute;
+    content: "";
+    width: 0%;
+    border-bottom: 2px solid rgb(162, 159, 159);
+    bottom: -5px;
+    transition: width .3s;
+}
+nav ul li a:hover:before{
+    width: 37%;   
+}
+
+
+/* main */
+main{
+    display: flex;
+    gap: 11%;
+    margin-top: 7em;
+    animation: growIn 1.8s cubic-bezier(0.075, 0.82, 0.165, 1.2) forwards;
+    transform: scale(0.5);
+}
+@keyframes growIn {
+    to{
+        transform: scale(1);
+    }
+}
+.left-col{
+    width: 45%;
+}
+.right-col{
+    flex-grow: 1;
+}
+h1{
+    font-size: 5.2rem;
+    font-family: 'Playfair Display';
+    font-weight: normal;
+    margin: 0;
+}
+.sub-head{
+    font-size: 1.8rem;
+}
+.cta-btns{
+    display: flex;
+    gap: 2em;
+    margin: 3.5em 0 5em 0;
+}
+.primary-cta{
+    background-color: #F1E2D1;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: .5em;
+    padding: 1em 2em;
+}
+.primary-cta:hover{
+    background: #E2D1BD;
+}
+.secondary-cta{
+    display: flex;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 1em 0em;
+    gap: 2em; 
+    align-items: center;
+    
+}
+.secondary-cta svg{
+    width: 20px;
+    transition: transform .3s;    
+}
+.secondary-cta:hover{
+    text-decoration: underline;   
+}
+.secondary-cta:hover svg{
+    transform: translateX(10px);
+}
+.news{
+    display: flex;
+    margin-top: 80px;
+    gap: 3em;
+    padding: 5em 3em ;
+    border: 1px solid black;
+    border-radius: 1em;
+    position: relative;
+}
+
+.news::before{
+    position: absolute;
+    content: "";
+    background: url("../images/confetti.svg") no-repeat;
+    width: 100%;
+    height: 100%;
+    top: -25px;
+    left: -20px;
+    z-index: 1;
+}
+p.employees{
+    font-size: 3.2rem;
+    margin: 0;
+    font-weight: 200;
+    line-height: 100%       ;
+}
+p.details{
+    font-size: 1.4rem;
+    margin: 0;
+}
+.right-col{
+    display: grid;
+    gap: 2.4em;
+    grid-template-areas: 
+        "card1 card2"
+        "card1 card3";
+    grid-template-columns: repeat(2, auto);
+}
+.card{
+    border-radius: 0.8em;
+    padding: 1em;
+    display: flex;
+    align-items: end;
+    transition: background-size .8s;
+    background-position: center;
+
+}
+.card1{
+    grid-area: card1;
+    background-image: url("../images/clothing4.jpg");
+    background-size: 148%;
+
+    position: relative;
+}
+.card1::before{
+    position: absolute;
+    content: "";
+    background: url("../images/tag.svg")no-repeat;
+    width: 100%;
+    height: 100%;
+    top: -40px;
+    left: -70px;
+    pointer-events: none;
+}
+.card1:hover{
+    background-size: 165%;
+}
+.card2{
+    grid-area: card2;
+    background-image: url("../images/clothing2.jpg");
+    background-size: 133%;
+}
+.card2:hover{
+    background-size: 148%;
+}
+.card3{
+    grid-area: card3;
+    background-image: url("../images/clothing3.jpg");
+    background-size: 133%;
+    background-position: center;
+
+}
+.card3:hover{
+    background-size: 148%;
+}
+a.card-details{
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    padding: 1em 2em; 
+    align-items: center;
+    border-radius: 0.5em;
+    width: 100%;
+    justify-content: space-between;
+    transition: transform .8s;
+}
+.card:hover a.card-details{
+    transform: translateY(-15px);
+}
+p.product-cat{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+}
+p.product-subcat{
+    font-size: 1.4rem;
+    margin: 0;
+}
+p.product-price{
+    font-size: 1.8rem;
+}
