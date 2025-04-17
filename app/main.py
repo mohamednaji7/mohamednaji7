@@ -2,6 +2,13 @@ import socket  # noqa: F401
 import threading 
 import os
 
+ROOT_DATA_PATH = '/tmp/data/codecrafters.io/http-server-tester/'
+
+RES_OK_LINE = b"HTTP/1.1 200 OK\r\n"
+RES_CREATED_LINE = b"HTTP/1.1 201 Created\r\n"
+NOT_FOUND_LINE = b"HTTP/1.1 404 Not Found\r\n\r\n"
+INTERNAL_SERVER_ERROR_LINE = b"HTTP/1.1 500 Internal Server Error\r\n\r\n"
+
 def msg_body(msg):
     # Ensure msg is a string
     if isinstance(msg, bytes):
@@ -13,21 +20,24 @@ def msg_body(msg):
             b'Content-Length: ' + str(len(msg)).encode() + 
             b'\r\n\r\n' + 
             msg.encode())
-RES_OK_LINE = b"HTTP/1.1 200 OK\r\n"
-NOT_FOUND_LINE = b"HTTP/1.1 404 Not Found\r\n\r\n"
-ROOT_DATA_PATH = '/tmp/data/codecrafters.io/http-server-tester/'
 
 def handle_client(conn):
     http_request = conn.recv(1024)
     # print(msg)
     request_line = http_request.split(b"\r\n")[0]
     headers = http_request.replace(request_line, b'').split(b'\r\n\r\n')[0]
+    request_body = http_request.split(b'\r\n\r\n')[1]
 
+
+    method = request_line.split(b" ")[0].decode("utf-8")
+    print("method: ", method)
 
     path = request_line.split(b" ")[1].decode("utf-8")
     print("path: ", path)
+
     if path == "/":
-        conn.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
+        conn.sendall(RES_OK_LINE + 
+                     b'\r\n')
     
     elif path.startswith('/echo/'):
         echo_msg = path.split('/')[2]
@@ -41,23 +51,35 @@ def handle_client(conn):
 
     elif path.startswith('/files/'):
         file_name = path.split('/')[2]
-        #  send no found if file not found
-        # send the file content back to the client if found, in the res body 
-        # with content type application/octet-stream,
-        # and content length in bytes  of the file
         file_path = os.path.join(ROOT_DATA_PATH, file_name)
-        print('file path: ', file_path)
-        try : 
-            with open(file_path, 'rb') as f:
-                file_content = f.read()
-                conn.sendall(RES_OK_LINE +
-                            b'Content-Type: application/octet-stream\r\n' +
-                            b'Content-Length: ' + str(len(file_content)).encode() +
-                            b'\r\n\r\n' + file_content
-                            )
-                
-        except FileNotFoundError:
-            conn.sendall(NOT_FOUND_LINE)
+        if method == 'GET':
+            #  send no found if file not found
+            # send the file content back to the client if found, in the res body 
+            # with content type application/octet-stream,
+            # and content length in bytes  of the file
+            print('file path: ', file_path)
+            try : 
+                with open(file_path, 'rb') as f:
+                    file_content = f.read()
+                    conn.sendall(RES_OK_LINE +
+                                b'Content-Type: application/octet-stream\r\n' +
+                                b'Content-Length: ' + str(len(file_content)).encode() +
+                                b'\r\n\r\n' + file_content
+                                )
+                    
+            except FileNotFoundError:
+                conn.sendall(NOT_FOUND_LINE)
+        elif method == 'POST':
+            try: 
+                print('request body: ', request_body)
+                print('Writing to file: ', file_path)
+                with open(file_path, 'w') as f:
+                    f.write(request_body.decode("utf-8"))
+                conn.sendall(RES_CREATED_LINE + 
+                     b'\r\n')
+            except Exception as e:
+                print(e)
+                conn.sendall(INTERNAL_SERVER_ERROR_LINE)
 
     elif path == '/user-agent':
         user_agent = headers.split(b'User-Agent: ')[1].split(b'\r\n')[0].decode("utf-8")
