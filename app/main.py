@@ -34,6 +34,8 @@ def main():
 
     path = request_line.split(b" ")[1].decode("utf-8")
     print("path: ", path)
+    print("addr: ", addr)
+    print("conn: ", conn)
     if path == "/":
         conn.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
     
