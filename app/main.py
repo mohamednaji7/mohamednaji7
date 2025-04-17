@@ -1,17 +1,21 @@
 import socket  # noqa: F401
 import threading 
+import os
 
 def msg_body(msg):
-    print('msg_body: ' + msg)
     # Ensure msg is a string
     if isinstance(msg, bytes):
         msg = msg.decode("utf-8")
+    print('msg_body: ' + msg)
     
     # Now encode everything for the HTTP response
     return (b'Content-Type: text/plain\r\n' + 
             b'Content-Length: ' + str(len(msg)).encode() + 
             b'\r\n\r\n' + 
             msg.encode())
+RES_OK_LINE = b"HTTP/1.1 200 OK\r\n"
+NOT_FOUND_LINE = b"HTTP/1.1 404 Not Found\r\n\r\n"
+ROOT_DATA_PATH = '/tmp/data/codecrafters.io/http-server-tester/'
 
 def handle_client(conn):
     http_request = conn.recv(1024)
@@ -33,14 +37,33 @@ def handle_client(conn):
         # with content type text/plain,
         # and content length of the message
         # in the respose body 
-        conn.sendall(b"HTTP/1.1 200 OK\r\n" + msg_body(echo_msg))
-        
+        conn.sendall(RES_OK_LINE + msg_body(echo_msg))
+
+    elif path.startswith('/files/'):
+        file_name = path.split('/')[2]
+        #  send no found if file not found
+        # send the file content back to the client if found, in the res body 
+        # with content type application/octet-stream,
+        # and content length in bytes  of the file
+        file_path = os.path.join(ROOT_DATA_PATH, file_name)
+        print('file path: ', file_path)
+        try : 
+            with open(file_path, 'rb') as f:
+                file_content = f.read()
+                conn.sendall(RES_OK_LINE +
+                            b'Content-Type: application/octet-stream\r\n' +
+                            b'Content-Length: ' + str(len(file_content)).encode() +
+                            b'\r\n\r\n' + file_content
+                            )
+                
+        except FileNotFoundError:
+            conn.sendall(NOT_FOUND_LINE)
+
     elif path == '/user-agent':
         user_agent = headers.split(b'User-Agent: ')[1].split(b'\r\n')[0].decode("utf-8")
-        conn.sendall(b"HTTP/1.1 200 OK\r\n" + msg_body(user_agent))
-    
+        conn.sendall(RES_OK_LINE + msg_body(user_agent))
     else:
-        conn.sendall(b"HTTP/1.1 404 Not Found\r\n\r\n")
+        conn.sendall(NOT_FOUND_LINE)
     conn.close()
 
 def main():
