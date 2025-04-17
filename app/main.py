@@ -1,5 +1,16 @@
 import socket  # noqa: F401
 
+def msg_body(msg):
+    print('msg_body: ' + msg)
+    # Ensure msg is a string
+    if isinstance(msg, bytes):
+        msg = msg.decode("utf-8")
+    
+    # Now encode everything for the HTTP response
+    return (b'Content-Type: text/plain\r\n' + 
+            b'Content-Length: ' + str(len(msg)).encode() + 
+            b'\r\n\r\n' + 
+            msg.encode())
 
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -18,8 +29,11 @@ def main():
     http_request = conn.recv(1024)
     # print(msg)
     request_line = http_request.split(b"\r\n")[0]
+    headers = http_request.replace(request_line, b'').split(b'\r\n\r\n')[0]
+
+
     path = request_line.split(b" ")[1].decode("utf-8")
-    print(path)
+    print("path: ", path)
     if path == "/":
         conn.sendall(b"HTTP/1.1 200 OK\r\n\r\n")
     
@@ -31,11 +45,11 @@ def main():
         # with content type text/plain,
         # and content length of the message
         # in the respose body 
-        conn.sendall(b'HTTP/1.1 200 OK\r\n'
-                     + b'Content-Type: text/plain\r\n'
-                     + b'Content-Length: ' + str(len(echo_msg)).encode() + b'\r\n\r\n'
-                     + echo_msg.encode()
-                     )
+        conn.sendall(b"HTTP/1.1 200 OK\r\n" + msg_body(echo_msg))
+        
+    elif path == '/user-agent':
+        user_agent = headers.split(b'User-Agent: ')[1].split(b'\r\n')[0].decode("utf-8")
+        conn.sendall(b"HTTP/1.1 200 OK\r\n" + msg_body(user_agent))
     
         
 
