@@ -9,6 +9,9 @@ RES_CREATED_LINE = b"HTTP/1.1 201 Created\r\n"
 NOT_FOUND_LINE = b"HTTP/1.1 404 Not Found\r\n\r\n"
 INTERNAL_SERVER_ERROR_LINE = b"HTTP/1.1 500 Internal Server Error\r\n\r\n"
 
+CONNECTION_CLOSE_LINE = b"Connection: close\r\n"
+CONNECTION_KEEP_ALIVE_LINE = b"Connection: keep-alive\r\n"
+
 def msg_body(msg):
     # Ensure msg is a string
     if isinstance(msg, bytes):
@@ -23,14 +26,18 @@ def msg_body(msg):
 
 def handle_client(conn):
     print('[handling client]')
+    
     while True:
         # Set a timeout to prevent hanging indefinitely
-        conn.settimeout(5.0)  # 5 seconds timeout for reading
+        # conn.settimeout(5.0)  # 5 seconds timeout for reading
         try: 
             http_request = conn.recv(1024)
             if not http_request:
                 break
             handle_request(conn, http_request)
+            if CONNECTION_CLOSE_LINE in http_request: 
+                print('[connection closed]')
+                break
         except socket.timeout:
             print('[timed out]')
             break
@@ -52,6 +59,9 @@ def handle_request(conn, http_request):
     # print('headers: ', headers)
     # print('request body: ', request_body)
 
+    is_connection_close_req = CONNECTION_CLOSE_LINE in http_request
+    print('is_connection_close_req: ', is_connection_close_req)
+
 
     method = request_line.split(b" ")[0].decode("utf-8")
     print("method: ", method)
@@ -59,9 +69,12 @@ def handle_request(conn, http_request):
     path = request_line.split(b" ")[1].decode("utf-8")
     print("path: ", path)
 
+    
     if path == "/":
-        conn.sendall(RES_OK_LINE + 
-                     b'\r\n')
+        conn.sendall(RES_OK_LINE +
+                     (CONNECTION_CLOSE_LINE if is_connection_close_req else CONNECTION_KEEP_ALIVE_LINE) + 
+                      b'\r\n'
+                     )
     
     elif path.startswith('/echo/'):
         echo_msg = path.split('/')[2]
@@ -71,7 +84,9 @@ def handle_request(conn, http_request):
         # with content type text/plain,
         # and content length of the message
         # in the respose body 
-        conn.sendall(RES_OK_LINE + msg_body(echo_msg))
+        conn.sendall(RES_OK_LINE + 
+                      (CONNECTION_CLOSE_LINE if is_connection_close_req else CONNECTION_KEEP_ALIVE_LINE) + 
+                    msg_body(echo_msg))
 
     elif path.startswith('/files/'):
         file_name = path.split('/')[2]
@@ -86,6 +101,7 @@ def handle_request(conn, http_request):
                 with open(file_path, 'rb') as f:
                     file_content = f.read()
                     conn.sendall(RES_OK_LINE +
+                      (CONNECTION_CLOSE_LINE if is_connection_close_req else CONNECTION_KEEP_ALIVE_LINE) + 
                                 b'Content-Type: application/octet-stream\r\n' +
                                 b'Content-Length: ' + str(len(file_content)).encode() +
                                 b'\r\n\r\n' + file_content
@@ -102,6 +118,7 @@ def handle_request(conn, http_request):
                 with open(file_path, 'wb') as f:
                     f.write(request_body)
                 conn.sendall(RES_CREATED_LINE + 
+                      (CONNECTION_CLOSE_LINE if is_connection_close_req else CONNECTION_KEEP_ALIVE_LINE) + 
                      b'\r\n')
             except Exception as e:
                 print(e)
@@ -109,7 +126,10 @@ def handle_request(conn, http_request):
 
     elif path == '/user-agent':
         user_agent = headers.split(b'User-Agent: ')[1].split(b'\r\n')[0].decode("utf-8")
-        conn.sendall(RES_OK_LINE + msg_body(user_agent))
+        conn.sendall(RES_OK_LINE +
+                      (CONNECTION_CLOSE_LINE if is_connection_close_req else CONNECTION_KEEP_ALIVE_LINE) + 
+                    msg_body(user_agent)
+                    )
     else:
         conn.sendall(NOT_FOUND_LINE)
 
