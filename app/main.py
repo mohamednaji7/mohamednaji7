@@ -22,11 +22,35 @@ def msg_body(msg):
             msg.encode())
 
 def handle_client(conn):
-    http_request = conn.recv(1024)
+    print('[handling client]')
+    while True:
+        # Set a timeout to prevent hanging indefinitely
+        conn.settimeout(5.0)  # 5 seconds timeout for reading
+        try: 
+            http_request = conn.recv(1024)
+            if not http_request:
+                break
+            handle_request(conn, http_request)
+        except socket.timeout:
+            print('[timed out]')
+            break
+        except Exception as e:
+            print('[ERROR]', e)
+            break
+    conn.close()
+
+    
+
+
+def handle_request(conn, http_request):
+
     # print(msg)
     request_line = http_request.split(b"\r\n")[0]
     headers = http_request.replace(request_line, b'').split(b'\r\n\r\n')[0]
     request_body = http_request.split(b'\r\n\r\n')[1]
+    # pint request body 
+    # print('headers: ', headers)
+    # print('request body: ', request_body)
 
 
     method = request_line.split(b" ")[0].decode("utf-8")
@@ -41,7 +65,7 @@ def handle_client(conn):
     
     elif path.startswith('/echo/'):
         echo_msg = path.split('/')[2]
-        print(echo_msg)
+        print('echo_msg', echo_msg)
         # send the echo message back to the client
         # and a status code of 200
         # with content type text/plain,
@@ -73,8 +97,10 @@ def handle_client(conn):
             try: 
                 print('request body: ', request_body)
                 print('Writing to file: ', file_path)
-                with open(file_path, 'w') as f:
-                    f.write(request_body.decode("utf-8"))
+                # with open(file_path, 'w') as f:
+                #     f.write(request_body.decode("utf-8"))
+                with open(file_path, 'wb') as f:
+                    f.write(request_body)
                 conn.sendall(RES_CREATED_LINE + 
                      b'\r\n')
             except Exception as e:
@@ -86,7 +112,6 @@ def handle_client(conn):
         conn.sendall(RES_OK_LINE + msg_body(user_agent))
     else:
         conn.sendall(NOT_FOUND_LINE)
-    conn.close()
 
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
