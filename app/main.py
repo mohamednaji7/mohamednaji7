@@ -131,7 +131,7 @@ class HTTPServer:
         try:
             request.params = path_params
             
-            if request.get_header('Accept-Encoding', '').lower() == 'gzip':
+            if 'gzip' in request.get_header('Accept-Encoding', '').lower():
                 response.set_header('Content-Encoding', 'gzip')
 
             # Call the handler with request, response, and path params
