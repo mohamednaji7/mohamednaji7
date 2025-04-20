@@ -1,6 +1,7 @@
 import socket
 import threading 
 import os
+import gzip
 from typing import Callable, Dict, Tuple, Any, Optional, Union, List
 
 import logging
@@ -225,11 +226,19 @@ class HTTPServer:
             self.headers = {}
             self.status_sent = False
             self.keep_alive = keep_alive
+
         
         def set_header(self, name: str, value: str):
             """Set a response header"""
             self.headers[name] = value
             return self
+        
+        def get_header(self, name: str, default=None):
+            """Get header value by name (case-insensitive)"""
+            for key, value in self.headers.items():
+                if key.lower() == name.lower():
+                    return value
+            return default
         
         def status(self, code: int):
             """Send HTTP status line"""
@@ -272,6 +281,9 @@ class HTTPServer:
         def _send_text(self, text: str):
             """Send a complete text response"""
             
+            do_compress = self.get_header('Content-Encoding') == 'gzip'
+            if do_compress: text = gzip.compress(text.encode('utf-8'))
+            
             self.set_header("Content-Type", "text/plain")
             self.set_header("Content-Length", str(len(text)))
             
@@ -281,7 +293,10 @@ class HTTPServer:
                 self.set_header("Connection", "keep-alive")
             
             self.send_headers()
-            self.conn.sendall(text.encode('utf-8'))
+            if do_compress : 
+                self.conn.sendall(text)
+            else:
+                self.conn.sendall(text.encode('utf-8')) 
             return self
         
             
