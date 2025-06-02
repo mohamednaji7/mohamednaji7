@@ -30,20 +30,50 @@ public class Main {
       int messageSize =  dataIn.readInt();  // reads 4 bytes as int
       short requestApiKey = dataIn.readShort();
       short requestApiVersion = dataIn.readShort();
-      int clientId = dataIn.readInt();
+      int correlationId = dataIn.readInt();
 
-      out.writeInt(messageSize);
-      out.writeInt(clientId);
 
+      System.out.println("Message size: " + messageSize);
+      System.out.println("API Key: " + requestApiKey);
+      System.out.println("API Version: " + requestApiVersion);
+      System.out.println("Correlation ID: " + correlationId);
+
+// TAG_BUFFER => byte
+// throttle_time_ms => INT32
+// TAG_BUFFER => byte
+      
       if (requestApiKey == 18){
-        System.out.println("API key is 18: ApiVersions API");
+        System.out.println("Handling APIVersions request");
+        short errorCode;
         if (requestApiVersion != 4){
           System.out.println("requestApiVersion version isn't 4");
-          // write short 
-          short errorCode = 35;
+          int responseSize = 6; // correlationId (4) + errorCode (2)
+          out.writeInt(responseSize);
+
+          errorCode = 35; 
+          out.writeInt(correlationId);
           out.writeShort(errorCode);  // writes 2 bytes in big-endian format
+        }
+        else{
+          System.out.println("Supported requestApiVersion version");
+          int responseSize =19; // correlationId (4) + errorCode (2) + 1 + 2*3  
+          out.writeInt(responseSize);
 
+          errorCode = 0; 
+          short minApiVersion = 4;
+          short maxApiVersion = 4;
+          out.writeInt(correlationId);
+          out.writeShort(errorCode);  // writes 2 bytes in big-endian format
+          
+          out.writeByte(0x02);  // api version 4 > apiKeysArrayLength
 
+          out.writeShort(requestApiKey);
+          out.writeShort(minApiVersion);
+          out.writeShort(maxApiVersion);
+
+          out.writeByte(0x00); // Empty tagged fields
+          out.writeInt(0);
+          out.writeByte(0x00); // Empty tagged fields
         }
       }
       out.flush();
