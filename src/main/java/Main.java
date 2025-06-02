@@ -1,3 +1,4 @@
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,6 +20,11 @@ public class Main {
       serverSocket.setReuseAddress(true);
       // Wait for connection from client.
       clientSocket = serverSocket.accept();
+      System.out.println("Client connected!");
+      DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
+      out.writeInt(0);
+      out.writeInt(7);
+      out.flush();
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
     } finally {
