@@ -1,5 +1,7 @@
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -21,9 +23,19 @@ public class Main {
       // Wait for connection from client.
       clientSocket = serverSocket.accept();
       System.out.println("Client connected!");
+
+      // Read 8 bytes
+      DataInputStream dataIn = new DataInputStream(clientSocket.getInputStream());
+      int messageSize =  dataIn.readInt();  // reads 4 bytes as int
+      short requestApiKey = dataIn.readShort();
+      short requestApiVersion = dataIn.readShort();
+      int clientId = dataIn.readInt();
+
+
+
       DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
       out.writeInt(0);
-      out.writeInt(7);
+      out.writeInt(clientId);
       out.flush();
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
