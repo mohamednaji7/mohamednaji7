@@ -26,16 +26,26 @@ public class Main {
 
       // Read 8 bytes
       DataInputStream dataIn = new DataInputStream(clientSocket.getInputStream());
+      DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
       int messageSize =  dataIn.readInt();  // reads 4 bytes as int
       short requestApiKey = dataIn.readShort();
       short requestApiVersion = dataIn.readShort();
       int clientId = dataIn.readInt();
 
-
-
-      DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
-      out.writeInt(0);
+      out.writeInt(messageSize);
       out.writeInt(clientId);
+
+      if (requestApiKey == 18){
+        System.out.println("API key is 18: ApiVersions API");
+        if (requestApiVersion != 4){
+          System.out.println("requestApiVersion version isn't 4");
+          // write short 
+          short errorCode = 35;
+          out.writeShort(errorCode);  // writes 2 bytes in big-endian format
+
+
+        }
+      }
       out.flush();
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
