@@ -46,7 +46,7 @@ public class Main {
         System.out.println("Handling APIVersions request");
         short errorCode;
         if (requestApiVersion != 4){
-          System.out.println("requestApiVersion version isn't 4");
+          System.out.println("Supported requestApiVersion version");
           int responseSize = 6; // correlationId (4) + errorCode (2)
           out.writeInt(responseSize);
 
@@ -55,27 +55,35 @@ public class Main {
           out.writeShort(errorCode);  // writes 2 bytes in big-endian format
         }
         else{
-          System.out.println("Supported requestApiVersion version");
-          int responseSize =19; // correlationId (4) + errorCode (2) + 1 + 2*3  
+          System.out.println("requestApiVersion version isn't 4");
+          int responseSize =19+6+1; // correlationId (4) + errorCode (2) + 1 +  (2-1 +2*3) * 2   + 1+4+1  
           out.writeInt(responseSize);
 
-          errorCode = 0; 
-          short minApiVersion = 4;
-          short maxApiVersion = 4;
           out.writeInt(correlationId);
+
+          errorCode = 0; 
           out.writeShort(errorCode);  // writes 2 bytes in big-endian format
           
-          out.writeByte(0x02);  // api version 4 > apiKeysArrayLength
+          out.writeByte(0x03);  // api version 4 > apiKeysArrayLength # The length of the API Versions array + 1
 
-          out.writeShort(requestApiKey);
-          out.writeShort(minApiVersion);
-          out.writeShort(maxApiVersion);
+
+          out.writeShort(1);
+          out.writeShort(0);
+          out.writeShort(16);
+          out.writeByte(0x00); // Empty TAG_BUFFER
+          out.writeShort(18);
+          out.writeShort(0);
+          out.writeShort(4);
+
+
 
           out.writeByte(0x00); // Empty tagged fields
           out.writeInt(0);
           out.writeByte(0x00); // Empty tagged fields
         }
-      }
+      } 
+
+
       out.flush();
     } catch (IOException e) {
       System.out.println("IOException: " + e.getMessage());
