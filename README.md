@@ -9,13 +9,13 @@
    
   **Connect with me:**  
   <a href="https://www.linkedin.com/in/mohamed-naji/" target="_blank">
-    <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" height="30" width="30" />
+    <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" height="40px" width="40px" />
   </a>
   <a href="https://www.upwork.com/freelancers/~01e69dc586f1332a26" target="_blank">
-    <img src="https://upwork.com/favicon.ico" alt="UpWork" height="30" width="30" />
+    <img src="https://upwork.com/favicon.ico" alt="UpWork" height="40px" width="40px" />
   </a>
   <a href="https://x.com/DxN4ji" target="_blank">
-    <img src="https://x.com/favicon.ico" alt="X" height="30" width="30" />
+    <img src="https://x.com/favicon.ico" alt="X" height="40px" width="40px" />
   </a>
 </p>
 
@@ -49,19 +49,19 @@
 <p>
   <!-- LeetCode -->
   <a href="https://leetcode.com/u/Do81Klklb4/" target="_blank">
-    <img src="https://leetcode.com/favicon.ico" alt="LeetCode" height="40" width="40" />
+    <img src="https://leetcode.com/favicon.ico" alt="LeetCode" height="30px" width="30px" />
   </a>
   <!-- Codecrafters -->
   <a href="https://app.codecrafters.io/users/mohamednaji7" target="_blank">
-    <img src="https://codecrafters.io/favicon.ico" alt="Codecrafters" height="40" width="40" />
+    <img src="https://codecrafters.io/favicon.ico" alt="Codecrafters" height="30px" width="30px" />
   </a>
   <!-- Kaggle -->
   <a href="https://www.kaggle.com/mohamedahmednaji" target="_blank">
-    <img src="https://kaggle.com/favicon.ico" alt="Kaggle" height="40" width="40" />
+    <img src="https://kaggle.com/favicon.ico" alt="Kaggle" height="30px" width="30px" />
   </a>
   <!-- Hugging Face -->
   <a href="https://huggingface.co/n4jiDX" target="_blank">
-    <img src="https://huggingface.co/favicon.ico" alt="Hugging Face" height="40" width="40" />
+    <img src="https://huggingface.co/favicon.ico" alt="Hugging Face" height="30px" width="30px" />
   </a>
 </p>
 <br />
