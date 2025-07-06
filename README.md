@@ -29,7 +29,7 @@
   <img alt="Render" src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black" />
   <img alt="Vercel" src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
   <img alt="Supabase" src="https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white" />
-  <img src="https://go-skill-icons.vercel.app/api/icons?i=express,typescript,vite,npm" height="40"/>
+  <img src="https://go-skill-icons.vercel.app/api/icons?i=express,typescript,vite,npm" height="40"/> 
   <img alt="Vitest" src="https://img.shields.io/badge/Vitest-%236E9F18?style=for-the-badge&logo=Vitest&logoColor=%23fcd703" />
 
 </p>
@@ -48,20 +48,21 @@
 <p>
   <!-- LeetCode -->
   <a href="https://leetcode.com/u/Do81Klklb4/" target="_blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="LeetCode" height="40" />
+    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="LeetCode" height="40px" width="40px"  />
   </a>
   <!-- Codecrafters -->
   <a href="https://app.codecrafters.io/users/mohamednaji7" target="_blank">
-    <img src="https://app.codecrafters.io/assets/7408d202b2bb110054fc.svg" alt="Codecrafters" height="40" />
+    <img src="https://app.codecrafters.io/assets/7408d202b2bb110054fc.svg" alt="Codecrafters" height="40px" width="40px" />
   </a>
   <a href="https://www.kaggle.com/mohamedahmednaji" target="_blank">
-    <img src="https://www.kaggle.com/static/images/favicon.ico" alt="Kaggle K logo" height="40" />
+    <img src="https://www.kaggle.com/static/images/favicon.ico" alt="Kaggle K logo" height="40px" width="40px"  />
   </a>
   <!-- Hugging Face (yellow) -->
   <a href="https://huggingface.co/n4jiDX" target="_blank">
-    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40" />
+    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40px" width="40px"  />
   </a>
-</p> <br />
+</p> 
+<br />
 
 ## 📈 GitHub Stats
 
