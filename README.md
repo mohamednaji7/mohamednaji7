@@ -18,10 +18,7 @@
   <img src="https://img.shields.io/badge/Upwork-6FDA44?style=for-the-badge&logo=upwork&logoColor=white" alt="UpWork Badge" height="30" width="80" />
 </a>
 
-</p>
-
-
-
+</p> <br />
 
 ## 🚀 Tech Stack I'm Working With:
 
@@ -64,11 +61,7 @@
   <a href="https://huggingface.co/n4jiDX" target="_blank">
     <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40" />
   </a>
-</p>
-
-
-
-
+</p> <br />
 
 ## 📈 GitHub Stats
 
@@ -83,9 +76,7 @@
 
 </div>
 
-
-##
-
+# 
 
 
 
