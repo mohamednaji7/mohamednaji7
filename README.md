@@ -8,17 +8,18 @@
   <span><strong>Feel free to reach me at:  📫  n4jidx@gmail.com  </strong></span>  
    
   **Connect with me:**  
-  <a href="https://www.linkedin.com/in/mohamed-naji/" target="_blank" style="display: inline-block; margin-right: 10px;">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="30" width="30" />
+  <a href="https://www.linkedin.com/in/mohamed-naji/" target="_blank">
+    <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" height="30" width="30" />
   </a>
-  <a href="https://x.com/DxN4ji" target="_blank" style="display: inline-block; margin-right: 10px;">
-    <img src="https://simpleicons.org/icons/x.svg" alt="X" height="30" width="30" style="filter: invert(100%);" />
+  <a href="https://www.upwork.com/freelancers/~01e69dc586f1332a26" target="_blank">
+    <img src="https://upwork.com/favicon.ico" alt="UpWork" height="30" width="30" />
   </a>
-<a href="https://www.upwork.com/freelancers/~01e69dc586f1332a26" target="_blank" style="display: inline-block;">
-  <img src="https://img.shields.io/badge/Upwork-6FDA44?style=for-the-badge&logo=upwork&logoColor=white" alt="UpWork Badge" height="30" width="80" />
-</a>
+  <a href="https://x.com/DxN4ji" target="_blank">
+    <img src="https://x.com/favicon.ico" alt="X" height="30" width="30" />
+  </a>
+</p>
 
-</p> <br />
+<br />
 
 ## 🚀 Tech Stack I'm Working With:
 
@@ -48,20 +49,21 @@
 <p>
   <!-- LeetCode -->
   <a href="https://leetcode.com/u/Do81Klklb4/" target="_blank">
-    <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/leet-code.svg" alt="LeetCode" height="40px" width="40px"  />
+    <img src="https://leetcode.com/favicon.ico" alt="LeetCode" height="40" width="40" />
   </a>
   <!-- Codecrafters -->
   <a href="https://app.codecrafters.io/users/mohamednaji7" target="_blank">
-    <img src="https://app.codecrafters.io/assets/7408d202b2bb110054fc.svg" alt="Codecrafters" height="40px" width="40px" />
+    <img src="https://codecrafters.io/favicon.ico" alt="Codecrafters" height="40" width="40" />
   </a>
+  <!-- Kaggle -->
   <a href="https://www.kaggle.com/mohamedahmednaji" target="_blank">
-    <img src="https://www.kaggle.com/static/images/favicon.ico" alt="Kaggle K logo" height="40px" width="40px"  />
+    <img src="https://kaggle.com/favicon.ico" alt="Kaggle" height="40" width="40" />
   </a>
-  <!-- Hugging Face (yellow) -->
+  <!-- Hugging Face -->
   <a href="https://huggingface.co/n4jiDX" target="_blank">
-    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" height="40px" width="40px"  />
+    <img src="https://huggingface.co/favicon.ico" alt="Hugging Face" height="40" width="40" />
   </a>
-</p> 
+</p>
 <br />
 
 ## 📈 GitHub Stats
