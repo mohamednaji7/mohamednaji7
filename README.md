@@ -1,6 +1,6 @@
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=mohamednaji7.mohamednaji7&" />
 
-<h1 align="center">Hi <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="5%">, I'm Muhammed Nagy</h1>
+<h1 align="center">Hi <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="5%">, I'm Mohamed Nagy</h1>
 
 
 
