@@ -9,14 +9,14 @@
    
   **Connect with me:**  
   <a href="https://www.linkedin.com/in/mohamed-naji/" target="_blank">
-    <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" height="35px" width="35px" />
+    <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" height="40px" width="40px" />
   </a>
-   <img src="https://img.shields.io/badge/Upwork-6FDA44?style=for-the-badge&logo=upwork&logoColor=white" alt="UpWork Badge" height="35px" width="80px" />
+   <img src="https://img.shields.io/badge/Upwork-6FDA44?style=for-the-badge&logo=upwork&logoColor=white" alt="UpWork Badge" height="40px" width="80px" />
   <a href="https://x.com/DxN4ji" target="_blank">
-    <img src="https://x.com/favicon.ico" alt="X" height="35px" width="35px" />
+    <img src="https://x.com/favicon.ico" alt="X" height="40px" width="40px" />
   </a>
   <!-- <a href="https://www.upwork.com/freelancers/~01e69dc586f1332a26" target="_blank">
-    <img src="https://upwork.com/favicon.ico" alt="UpWork" height="35px" width="35px" />
+    <img src="https://upwork.com/favicon.ico" alt="UpWork" height="40px" width="40px" />
   </a> -->
 </p>
 
