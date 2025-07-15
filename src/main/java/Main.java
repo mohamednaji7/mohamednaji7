@@ -6,6 +6,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
     public static void main(String[] args){
@@ -36,6 +38,8 @@ public class Main {
         }
     }
 
+    private static final Map<String, String> store = new ConcurrentHashMap<>();
+
     public static void handleClient(Socket clientSocket){
         try{
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);                   
@@ -45,11 +49,12 @@ public class Main {
                 
                 List<String> command = parseRespCommand(in);
                 if (command.isEmpty()) {
-                    out.print("-ERR empty command\r\n");
-                    out.flush();
-                    System.err.println("[ERROR] empty command");
-                    return;
+                    // out.print("-ERR empty command\r\n");
+                    // out.flush();
+                    System.err.println("");
+                    break;
                 }
+                System.out.println(command);
     
                 String cmd = command.get(0).toUpperCase();
                 switch (cmd) {
@@ -65,7 +70,25 @@ public class Main {
                         // out.print("$" + msg.length() + "\r\n" + msg + "\r\n");
     
                         break;
-    
+                    case "SET":
+                        if (command.size()==3){
+                            String key = command.get(1);
+                            String value = command.get(2);
+                            store.put(key, value);
+                            out.print("+OK\r\n");
+                        }
+                        break;
+                    case "GET":
+                        if (command.size()==2){
+                            String key = command.get(1);
+                            String value = store.get(key);
+                            if(value==null){
+                                out.print("$-1\r\n");
+                            }else{
+                                out.print("$" + value.length() + "\r\n" + value + "\r\n");
+                            }
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -85,7 +108,7 @@ public class Main {
     }
 
     public static List<String> parseRespCommand(BufferedReader in) throws IOException {
-        System.out.println("[LOG] Parsing the RESP");
+        System.out.print("[LOG] Parsing the RESP: ");
 
         List<String> parts = new ArrayList<>();
 
