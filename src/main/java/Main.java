@@ -11,7 +11,6 @@ public class Main {
         System.out.println("[LOG] Server is starting...");
 
         ServerSocket serverSocket = null;
-        Socket clientSocket = null;
         int port = 6379;
         try {
             serverSocket = new ServerSocket(port);
@@ -19,12 +18,24 @@ public class Main {
 
             // Log 2: Server is listening
             System.out.println("[LOG] Listening for connections on port " + port + "...");
+            
+            while(true){
+                Socket clientSocket = serverSocket.accept();
 
-            clientSocket = serverSocket.accept();
+                // Log 3: Client connected
+                System.out.println("[LOG] Client connected from " + clientSocket.getInetAddress());
+                
+                // handle each client in a new thread
+                Thread clienThread = new Thread( () -> handleClient(clientSocket));
+                clienThread.start();
+            }
+        } catch (IOException e) {
+            System.err.println("[ERROR] Server: " + e.getMessage());
+        }
+    }
 
-            // Log 3: Client connected
-            System.out.println("[LOG] Client connected from " + clientSocket.getInetAddress());
-
+    public static void handleClient(Socket clientSocket){
+        try{
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);                   
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             
@@ -48,14 +59,12 @@ public class Main {
 
 
         } catch (IOException e) {
-            System.out.println("[ERROR] IOException: " + e.getMessage());
+            System.err.println("[ERROR] Client handler exception: " + e.getMessage());
         } finally {
             try {
-                if (clientSocket != null) {
-                    clientSocket.close();
-                }
+                clientSocket.close();
             } catch (IOException e) {
-                System.out.println("[ERROR] Failed to close client socket: " + e.getMessage());
+                System.err.println("[ERROR] Failed to close client socket: " + e.getMessage());
             }
         }
     }
