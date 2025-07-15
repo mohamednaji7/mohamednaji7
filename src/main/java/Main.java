@@ -39,6 +39,8 @@ public class Main {
     }
 
     private static final Map<String, String> store = new ConcurrentHashMap<>();
+    private static final Map<String, Long> expiryMap = new ConcurrentHashMap<>();
+
 
     public static void handleClient(Socket clientSocket){
         try{
@@ -71,16 +73,43 @@ public class Main {
     
                         break;
                     case "SET":
-                        if (command.size()==3){
+                        if (command.size()>=3){
                             String key = command.get(1);
                             String value = command.get(2);
                             store.put(key, value);
-                            out.print("+OK\r\n");
+
+                            if(command.size()==5){
+                                String arg = command.get(3);
+                                if(arg.equalsIgnoreCase("PX")){
+                                    try{
+                                            long pxMillis = Long.parseLong(command.get(4));
+                                            long expiryTime = System.currentTimeMillis() + pxMillis;
+                                            expiryMap.put(key, expiryTime);
+                                            out.print("+OK\r\n");
+                                    }catch(NumberFormatException e){
+                                        System.err.println("[ERROR] PX value must be an integer");
+                                    }
+                                }
+                            }else{
+                                out.print("+OK\r\n");
+                            }
                         }
                         break;
                     case "GET":
                         if (command.size()==2){
+                            //  handles expiry in two ways: "Active" and "Passive".
+                            // using the passive way
                             String key = command.get(1);
+                            
+                                    // Check for expiry
+                            if (expiryMap.containsKey(key)) {
+                                long expireAt = expiryMap.get(key);
+                                if (System.currentTimeMillis()  > expireAt){
+                                    store.remove(key);
+                                    expiryMap.remove(key);
+                                }
+                            }
+                            
                             String value = store.get(key);
                             if(value==null){
                                 out.print("$-1\r\n");
@@ -125,11 +154,6 @@ public class Main {
                 break;
             }
 
-            // int size = Integer.parseInt(sizeLine.substring(1)); // 4
-            // char[] buf = new char[size];
-            // int read = in.read(buf, 0, size);
-            // in.readLine(); // skip \r\n after bulk string
-            // parts.add(new String(buf, 0, read));
 
             String bulk = in.readLine();  // should be "ECHO" or "hey"
             parts.add(bulk);
