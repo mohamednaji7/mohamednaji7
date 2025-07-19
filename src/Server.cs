@@ -122,7 +122,8 @@ class Program {
                     case "RPUSH":
                         if (command.Count >= 3){
                             string key = command[1];
-                            List<string> values = command.GetRange(2, command.Count-2);
+                            // List<string> values = command.GetRange(2, command.Count-2);
+                            List<string> values = command[2..];
 
                             // string val = command[2];
                             
@@ -148,18 +149,37 @@ class Program {
                             bool endParsed = int.TryParse(command[3], out int endIndex );
 
                             if(startParsed && endParsed){
-                                if( store.TryGetValue(key, out object existing)){
-                                    if(existing is List<string> list && startIndex < list.Count  && startIndex<=endIndex ){
-                                        if(endIndex >= list.Count){
-                                            endIndex = list.Count-1;
+                                
+                                if (store.TryGetValue(key, out object existing)){
+                                    if (existing is List<string> list){
+                                        if (startIndex < 0){
+                                            if (startIndex < -list.Count){
+                                                startIndex = 0;
+                                            }else{
+                                                startIndex += list.Count;
+                                            }
                                         }
-                                        
-                                        writer.Write(EncodingToRESP(list.GetRange(startIndex, endIndex - startIndex + 1)));
-                                    }else{
-                                        writer.Write(emptyRESParrayCode);
+                                        if (endIndex < 0)
+                                        {
+                                            endIndex += list.Count;
+                                        }
+                                        if (startIndex < list.Count && startIndex <= endIndex)
+                                        {
 
+                                            if (endIndex >= list.Count)
+                                            {
+                                                endIndex = list.Count - 1;
+                                            }
+                                            // writer.Write(EncodingToRESP(list.GetRange(startIndex, endIndex - startIndex + 1)));
+                                            endIndex += 1;
+                                            writer.Write(EncodingToRESP(list[startIndex..endIndex]));
+                                        }else{
+                                            writer.Write(emptyRESParrayCode);
+                                        }
                                     }
-                                }else{
+                                }
+                                else
+                                {
                                     writer.Write(emptyRESParrayCode);
 
                                 }
