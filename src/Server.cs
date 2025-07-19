@@ -140,6 +140,32 @@ class Program {
                             }
                         }
                         break;
+                    case "LPUSH":
+                        if (command.Count >= 3){
+                            string key = command[1];
+                            // List<string> values = command.GetRange(2, command.Count-2);
+                            List<string> values = command[2..];
+                            values.Reverse(); 
+
+                            // string val = command[2];
+
+                            if (store.TryGetValue(key, out object existing))
+                            {
+                                if (existing is List<string> list)
+                                {
+                                    list.InsertRange(0, values);
+                                    writer.Write(EncodingToRESP(list.Count));
+                                }
+                            }
+                            else
+                            {
+                                List<string> list = new List<string>(values);
+                                store[key] = list;
+                                writer.Write(EncodingToRESP(list.Count));
+
+                            }
+                        }
+                        break;
                     case "LRANGE":
                         Console.WriteLine("[LOG] LRANGE");
                         if (command.Count == 4){
