@@ -1,10 +1,172 @@
+using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
 
-// You can use print statements as follows for debugging, they'll be visible when running tests.
-Console.WriteLine("Logs from your program will appear here!");
+class Program
+{
+    static ConcurrentDictionary<string, string> store = new ConcurrentDictionary<string, string>();
+    static ConcurrentDictionary<string, long> expiryMap = new ConcurrentDictionary<string, long>();
 
-// Uncomment this block to pass the first stage
-TcpListener server = new TcpListener(IPAddress.Any, 6379);
-server.Start();
-server.AcceptSocket(); // wait for client
+    static void Main(string[] args)
+    {
+        Console.WriteLine("[LOG] Server is starting...");
+
+        int port = 6379;
+        TcpListener server = new TcpListener(IPAddress.Any, port);
+
+        try
+        {
+            server.Start();
+            Console.WriteLine("[LOG] Listening for connections on port " + port + "...");
+
+            while (true)
+            {
+                TcpClient client = server.AcceptTcpClient();
+                Console.WriteLine("[LOG] Client connected from " + client.Client.RemoteEndPoint);
+
+                // Start a new thread for each client
+                Thread clientThread = new Thread(() => HandleClient(client));
+                clientThread.Start();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine("[ERROR] Server: " + ex.Message);
+        }
+    }
+
+    static void HandleClient(TcpClient client)
+    {
+        try
+        {
+            NetworkStream stream = client.GetStream();
+            StreamReader reader = new StreamReader(stream, Encoding.ASCII);
+            StreamWriter writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
+
+            while (true)
+            {
+                List<string> command = ParseRespCommand(reader);
+                if (command.Count == 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine($"[LOG] Received command: {string.Join(", ", command)}");
+
+                string cmd = command[0].ToUpper();
+
+                switch (cmd)
+                {
+                    case "PING":
+                        writer.Write("+PONG\r\n");
+                        break;
+
+                    case "ECHO":
+                        if (command.Count >= 2)
+                        {
+                            string msg = command[1];
+                            Console.WriteLine("[LOG] msg: " + msg);
+                            writer.Write("+" + msg + "\r\n");
+                        }
+                        break;
+
+                    case "SET":
+                        if (command.Count >= 3)
+                        {
+                            string key = command[1];
+                            string value = command[2];
+                            store[key] = value;
+
+                            if (command.Count == 5 && command[3].ToUpper() == "PX")
+                            {
+                                if (long.TryParse(command[4], out long pxMillis))
+                                {
+                                    long expiryTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + pxMillis;
+                                    expiryMap[key] = expiryTime;
+                                }
+                                else
+                                {
+                                    Console.Error.WriteLine("[ERROR] PX value must be an integer");
+                                }
+                            }
+
+                            writer.Write("+OK\r\n");
+                        }
+                        break;
+
+                    case "GET":
+                        if (command.Count == 2)
+                        {
+                            string key = command[1];
+
+                            if (expiryMap.TryGetValue(key, out long expiryTime))
+                            {
+                                long now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+                                if (now > expiryTime)
+                                {
+                                    store.TryRemove(key, out _);
+                                    expiryMap.TryRemove(key, out _);
+                                }
+                            }
+
+                            if (store.TryGetValue(key, out string val))
+                            {
+                                writer.Write($"${val.Length}\r\n{val}\r\n");
+                            }
+                            else
+                            {
+                                writer.Write("$-1\r\n");
+                            }
+                        }
+                        break;
+
+                    default:
+                        writer.Write("-ERR unknown command\r\n");
+                        break;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine("[ERROR] Client handler exception: " + ex.Message);
+        }
+        finally
+        {
+            client.Close();
+        }
+    }
+
+    static List<string> ParseRespCommand(StreamReader reader)
+    {
+        Console.Write("[LOG] Parsing the RESP: ");
+
+        List<string> parts = new List<string>();
+
+        string? line = reader.ReadLine();
+        if (line == null || !line.StartsWith("*"))
+            return parts;
+
+        if (!int.TryParse(line.Substring(1), out int numberOfParts))
+            return parts;
+
+        for (int i = 0; i < numberOfParts; i++)
+        {
+            string? sizeLine = reader.ReadLine(); // $4
+            if (sizeLine == null || !sizeLine.StartsWith("$"))
+                break;
+
+            string? data = reader.ReadLine();  // "ECHO" or "hey"
+            if (data != null)
+            {
+                parts.Add(data);
+            }
+        }
+
+        return parts;
+    }
+}
