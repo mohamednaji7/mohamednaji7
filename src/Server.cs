@@ -49,7 +49,7 @@ class Program {
                     break;
                 }
 
-                Console.WriteLine($"[LOG] Received command: {string.Join(", ", command)}");
+                Console.WriteLine($"[LOG] Received command: {string.Join(" ", command)}");
 
                 string cmd = command[0].ToUpper();
 
@@ -115,18 +115,24 @@ class Program {
                         break;
 
                     case "RPUSH":
-                        if (command.Count == 3){
+                        if (command.Count >= 3){
                             string key = command[1];
-                            string val = command[2];
+                            List<string> values = command.GetRange(2, command.Count-2);
+
+                            // string val = command[2];
                             
                             if( store.TryGetValue(key, out object existing)){
                                 if(existing is List<string> list){
-                                    list.Add(val);
+                                    list.AddRange(values);
                                     writer.Write($":{list.Count}\r\n");
                                 }
                             }else{
-                                store[key] = new List<string> {val};
-                                writer.Write(":1\r\n");
+                                // store[key] = new List<string> {val};
+                                List<string> list = new List<string>(values); 
+                                store[key] = list;
+                                // store[key] = values;
+                                // writer.Write(":1\r\n");
+                                writer.Write($":{list.Count}\r\n");
 
                             }
                         }
