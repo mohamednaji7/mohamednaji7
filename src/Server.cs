@@ -7,20 +7,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-class Program
-{
-    static ConcurrentDictionary<string, string> store = new ConcurrentDictionary<string, string>();
+class Program {
+    static ConcurrentDictionary<string, object> store = new ConcurrentDictionary<string, object>();
     static ConcurrentDictionary<string, long> expiryMap = new ConcurrentDictionary<string, long>();
 
-    static void Main(string[] args)
-    {
+    static void Main(string[] args) {
         Console.WriteLine("[LOG] Server is starting...");
 
         int port = 6379;
         TcpListener server = new TcpListener(IPAddress.Any, port);
 
-        try
-        {
+        try {
             server.Start();
             Console.WriteLine("[LOG] Listening for connections on port " + port + "...");
 
@@ -34,22 +31,18 @@ class Program
                 clientThread.Start();
             }
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             Console.Error.WriteLine("[ERROR] Server: " + ex.Message);
         }
     }
 
-    static void HandleClient(TcpClient client)
-    {
-        try
-        {
+    static void HandleClient(TcpClient client) {
+        try {
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream, Encoding.ASCII);
             StreamWriter writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
 
-            while (true)
-            {
+            while (true) {
                 List<string> command = ParseRespCommand(reader);
                 if (command.Count == 0)
                 {
@@ -60,8 +53,7 @@ class Program
 
                 string cmd = command[0].ToUpper();
 
-                switch (cmd)
-                {
+                switch (cmd) {
                     case "PING":
                         writer.Write("+PONG\r\n");
                         break;
@@ -76,14 +68,12 @@ class Program
                         break;
 
                     case "SET":
-                        if (command.Count >= 3)
-                        {
+                        if (command.Count >= 3) {
                             string key = command[1];
                             string value = command[2];
                             store[key] = value;
 
-                            if (command.Count == 5 && command[3].ToUpper() == "PX")
-                            {
+                            if (command.Count == 5 && command[3].ToUpper() == "PX") {
                                 if (long.TryParse(command[4], out long pxMillis))
                                 {
                                     long expiryTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() + pxMillis;
@@ -100,12 +90,10 @@ class Program
                         break;
 
                     case "GET":
-                        if (command.Count == 2)
-                        {
+                        if (command.Count == 2){
                             string key = command[1];
 
-                            if (expiryMap.TryGetValue(key, out long expiryTime))
-                            {
+                            if (expiryMap.TryGetValue(key, out long expiryTime)) {
                                 long now = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
                                 if (now > expiryTime)
                                 {
@@ -114,9 +102,10 @@ class Program
                                 }
                             }
 
-                            if (store.TryGetValue(key, out string val))
-                            {
-                                writer.Write($"${val.Length}\r\n{val}\r\n");
+                            if (store.TryGetValue(key, out object val)){
+                                if (val is string strVal ){
+                                    writer.Write($"${strVal.Length}\r\n{strVal}\r\n");
+                                }
                             }
                             else
                             {
@@ -125,8 +114,25 @@ class Program
                         }
                         break;
 
+                    case "RPUSH":
+                        if (command.Count == 3){
+                            string key = command[1];
+                            string val = command[2];
+                            
+                            if( store.TryGetValue(key, out object existing)){
+                                if(existing is List<string> list){
+                                    list.Add(val);
+                                    writer.Write($":{list.Count}\r\n");
+                                }
+                            }else{
+                                store[key] = new List<string> {val};
+                                writer.Write(":1\r\n");
+
+                            }
+                        }
+                        break;
+
                     default:
-                        writer.Write("-ERR unknown command\r\n");
                         break;
                 }
             }
@@ -151,7 +157,7 @@ class Program
         if (line == null || !line.StartsWith("*"))
             return parts;
 
-        if (!int.TryParse(line.Substring(1), out int numberOfParts))
+        if (!int.TryParse(line.Substring(1), out int numberOfParts ))
             return parts;
 
         for (int i = 0; i < numberOfParts; i++)
