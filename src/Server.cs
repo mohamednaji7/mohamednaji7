@@ -11,6 +11,8 @@ class Program {
     static ConcurrentDictionary<string, object> store = new ConcurrentDictionary<string, object>();
     static ConcurrentDictionary<string, long> expiryMap = new ConcurrentDictionary<string, long>();
 
+    static string  emptyRESParrayCode = "*0\r\n"; 
+
     static void Main(string[] args) {
         Console.WriteLine("[LOG] Server is starting...");
 
@@ -46,6 +48,7 @@ class Program {
                 List<string> command = ParseRespCommand(reader);
                 if (command.Count == 0)
                 {
+                    Console.WriteLine("not commands, connection closed.");
                     break;
                 }
 
@@ -104,7 +107,9 @@ class Program {
 
                             if (store.TryGetValue(key, out object val)){
                                 if (val is string strVal ){
-                                    writer.Write($"${strVal.Length}\r\n{strVal}\r\n");
+                                    // writer.Write($"${strVal.Length}\r\n{strVal}\r\n");
+                                    writer.Write(EncodingToRESP(strVal));
+                                    
                                 }
                             }
                             else
@@ -124,21 +129,46 @@ class Program {
                             if( store.TryGetValue(key, out object existing)){
                                 if(existing is List<string> list){
                                     list.AddRange(values);
-                                    writer.Write($":{list.Count}\r\n");
+                                    writer.Write(EncodingToRESP(list.Count));
                                 }
                             }else{
-                                // store[key] = new List<string> {val};
                                 List<string> list = new List<string>(values); 
                                 store[key] = list;
-                                // store[key] = values;
-                                // writer.Write(":1\r\n");
-                                writer.Write($":{list.Count}\r\n");
+                                writer.Write(EncodingToRESP(list.Count));
 
                             }
                         }
                         break;
+                    case "LRANGE":
+                        Console.WriteLine("[LOG] LRANGE");
+                        if (command.Count == 4){
+                            Console.WriteLine("[LOG] Command is 4 parts");
+                            string key = command[1];
+                            bool startParsed = int.TryParse(command[2], out int startIndex );
+                            bool endParsed = int.TryParse(command[3], out int endIndex );
 
+                            if(startParsed && endParsed){
+                                if( store.TryGetValue(key, out object existing)){
+                                    if(existing is List<string> list && startIndex < list.Count  && startIndex<=endIndex ){
+                                        if(endIndex >= list.Count){
+                                            endIndex = list.Count-1;
+                                        }
+                                        
+                                        writer.Write(EncodingToRESP(list.GetRange(startIndex, endIndex - startIndex + 1)));
+                                    }else{
+                                        writer.Write(emptyRESParrayCode);
+
+                                    }
+                                }else{
+                                    writer.Write(emptyRESParrayCode);
+
+                                }
+                            }
+                            
+                        }
+                        break;
                     default:
+                        writer.Write("-ERR unknown command\r\n");
                         break;
                 }
             }
@@ -153,8 +183,25 @@ class Program {
         }
     }
 
-    static List<string> ParseRespCommand(StreamReader reader)
-    {
+    static string EncodingToRESP(object res){
+        Console.WriteLine("[LOG] Encoding response");
+        if (res  is string strRes ){
+            return $"${strRes.Length}\r\n{strRes}\r\n";
+        }else if (res  is int intRes ){
+            return $":{intRes}\r\n";
+        }
+        else if (res is List<string> list){
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"*{list.Count}\r\n");
+            foreach(var item in list){
+                sb.Append($"${item.Length}\r\n{item}\r\n");
+            }
+            return sb.ToString();
+        }
+        return "$-1\r\n";
+    }
+
+    static List<string> ParseRespCommand(StreamReader reader){
         Console.Write("[LOG] Parsing the RESP: ");
 
         List<string> parts = new List<string>();
