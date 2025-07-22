@@ -10,7 +10,7 @@
 <table>
   <tr>
     <td>
-      <img src="assets/lgtm-looks-good-to-me.gif" width="185" height="155" alt="LGTM code review" />
+      <img src="assets/lgtm-looks-good-to-me.gif" width="165" height="155" alt="LGTM code review" />
     </td>
     <td>
       <strong>Backend Engineer</strong> with a background in <strong>AI (ML, DL, RL)</strong> and strong skill in 
@@ -20,8 +20,7 @@
       Passionate about building software systems and growing within high-impact engineering teams.
     </td>
     <td>
-      I was doing ML
-      <img src="assets/la-science.gif" width="165" height="145" alt="Peter Griffin 'la science'" />  
+      I was doing ML <img src="assets/la-science.gif" width="165" height="145" alt="Peter Griffin 'la science'" />  
     
   </td>
   </tr>
