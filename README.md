@@ -10,7 +10,6 @@
 <table>
   <tr>
     <td>
-      I build products an systems
       <img src="assets/lgtm-looks-good-to-me.gif" width="185" height="155" alt="LGTM code review" />
     </td>
     <td>
@@ -22,7 +21,7 @@
     </td>
     <td>
       I was doing ML
-      <img src="assets/la-science.gif" width="175" height="145" alt="Peter Griffin 'la science'" />  
+      <img src="assets/la-science.gif" width="165" height="145" alt="Peter Griffin 'la science'" />  
     
   </td>
   </tr>
