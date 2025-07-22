@@ -1,14 +1,40 @@
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=mohamednaji7.mohamednaji7&" />
 
-<h1 align="center">Hi <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="5%">, I'm Mohamed Nagy</h1>
+
+<h1 align="center">Hi 👋, I'm Mohamed Nagy</h1>
+
+
+
+
+  
+<table>
+  <tr>
+    <td>
+      I build products an systems
+      <img src="assets/lgtm-looks-good-to-me.gif" width="185" height="155" alt="LGTM code review" />
+    </td>
+    <td>
+      <strong>Backend Engineer</strong> with a background in <strong>AI (ML, DL, RL)</strong> and strong skill in 
+      <strong>Node.js</strong>, <strong>PostgreSQL</strong>, and building <strong>RESTful APIs</strong>.<br />
+      Started with AI exploration and shifted focus toward backend development—bringing a solid understanding of 
+      data workflows and problem-solving.<br />
+      Passionate about building software systems and growing within high-impact engineering teams.
+    </td>
+    <td>
+      I was doing ML
+      <img src="assets/la-science.gif" width="175" height="145" alt="Peter Griffin 'la science'" />  
+    
+  </td>
+  </tr>
+</table>
+
 
 
 
 <p align="left">
   <span><strong>Feel free to reach me at:  📫  n4jidx@gmail.com  </strong></span>  
    
-  **Connect with me:**  
-  <a href="https://www.linkedin.com/in/mohamed-naji/" target="_blank">
+  <img src="https://tenor.com/view/bitcoin-call-call-me-call-me-sticker-call-me-sticker-design-gif-12054832765632269546.gif" width="25" highet="25"> **Connect with me:**    <a href="https://www.linkedin.com/in/mohamed-naji/" target="_blank">
     <img src="https://linkedin.com/favicon.ico" alt="LinkedIn" height="40px" width="40px" />
   </a>
   <a href="https://www.upwork.com/freelancers/~01e69dc586f1332a26" target="_blank">
@@ -30,17 +56,17 @@
   <img alt="Render" src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black" />
   <img alt="Vercel" src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
   <img alt="Supabase" src="https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white" />
-  <img src="https://go-skill-icons.vercel.app/api/icons?i=express,typescript,vite,npm" height="40"/> 
+  <img src="https://go-skill-icons.vercel.app/api/icons?i=express,typescript,vite,npm,postgresql" height="40"/> 
   <img alt="Vitest" src="https://img.shields.io/badge/Vitest-%236E9F18?style=for-the-badge&logo=Vitest&logoColor=%23fcd703" />
 
 </p>
 
 
 
-#### 🛠️ General Dev & SWE Tools
+#### 🛠️ Dev 
 
 <p> 
-  <img src="https://skillicons.dev/icons?i=git,vscode,bash,linux,ubuntu,windows,java,python" height="40" />
+  <img src="https://skillicons.dev/icons?i=git,vscode,bash,ubuntu,java,python" height="40" />
 </p>
 
 
@@ -48,7 +74,7 @@
 
 <p>
   <!-- LeetCode -->
-  <a href="https://leetcode.com/u/Do81Klklb4/" target="_blank">
+  <a href="https://leetcode.com/u/mohamed-nagy/" target="_blank">
     <img src="https://leetcode.com/favicon.ico" alt="LeetCode" height="30px" width="30px" />
   </a>
   <!-- Codecrafters -->
@@ -63,40 +89,62 @@
   <a href="https://huggingface.co/n4jiDX" target="_blank">
     <img src="https://huggingface.co/favicon.ico" alt="Hugging Face" height="30px" width="30px" />
   </a>
-</p>
+</p>  
+
+
 <br />
 
-## 📈 GitHub Stats
+
+## 📊 Stats
+
+<table>
+  <tr>
+    <td valign="top" width="50%">
+      <img src="https://github-readme-stats.vercel.app/api?username=mohamednaji7&hide_title=True&hide_rank=false&show_icons=true&include_all_commits=false&count_private=true&disable_animations=false&show=reviews,prs_merged,issues&theme=github_dark&locale=en&hide_border=true&order=1" alt="GitHub Stats" /><br>
+      <img src="https://github-readme-stats.vercel.app/api/top-langs?username=mohamednaji7&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=blue-green&hide_border=true&order=2" alt="Top Languages" />
+    </td>
+    <td valign="top" width="50%">
+      <img src="https://leetcard.jacoblin.cool/mohamed-nagy?theme=dark&font=Scada&ext=activity" alt="LeetCode Stats" />
+    </td>
+  </tr>
+</table>
+
+
+
+
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=mohamednaji7&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=blue-green&locale=en&hide_border=true&order=1" height="150" alt="stats graph" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=mohamednaji7&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=blue-green&hide_border=true&order=2" height="150" alt="languages graph"  />
-</div>
-
-<div align="center">
-  <!-- <img src="https://github-profile-trophy.vercel.app?username=mohamednaji7&theme=dracula&column=8&row=1&margin-w=8&margin-h=15&no-bg=false&no-frame=false&order=4" height="150" alt="trophy graph" /> -->
   <img src="https://github-profile-trophy.vercel.app?username=mohamednaji7&theme=dracula&column=8&row=1&margin-w=8&margin-h=15&no-bg=true&no-frame=true&order=4" height="150" alt="trophy graph"  />
 
-</div>
+</div>  
+
+
+<!-- <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mohamednaji7&theme=default" /> -->
 
 # 
 
 
-
 #### 🤖 AI & ML Stack
 
-<p>
-  <img alt="Jupyter" src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" />
-  <img alt="Numpy" src="https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white" />
-  <img alt="Colab" src="https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252" />
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-  <img alt="TensorFlow" src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
-  <img alt="Keras" src="https://img.shields.io/badge/Keras-FF0000?style=for-the-badge&logo=keras&logoColor=white" />
-  <img alt="Comet ML" src="https://custom-icon-badges.demolab.com/badge/comet%20ml-262c3e?style=for-the-badge&logo=logo_comet_ml&logoColor=black" />
-  <img alt="Weights & Biases" src="https://img.shields.io/badge/Weights_&_Biases-FFBE00?style=for-the-badge&logo=WeightsAndBiases&logoColor=white" />
-
-
-</p>
+<table>
+  <tr>
+    <td align="center" width="150px">
+      <img src="assets/see-this-this-is-science.gif" width="120" height="120" /> 
+    </td>
+    <td>
+      <p>
+        <img alt="Jupyter" src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" />
+        <img alt="Numpy" src="https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white" />
+        <img alt="Colab" src="https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252" />
+        <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+        <img alt="TensorFlow" src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
+        <img alt="Keras" src="https://img.shields.io/badge/Keras-FF0000?style=for-the-badge&logo=keras&logoColor=white" />
+        <img alt="Comet ML" src="https://custom-icon-badges.demolab.com/badge/comet%20ml-262c3e?style=for-the-badge&logo=logo_comet_ml&logoColor=black" />
+        <img alt="Weights & Biases" src="https://img.shields.io/badge/Weights_&_Biases-FFBE00?style=for-the-badge&logo=WeightsAndBiases&logoColor=white" />
+      </p>
+    </td>
+  </tr>
+</table>
 
 #### 🧠 Computer Architecture
 
