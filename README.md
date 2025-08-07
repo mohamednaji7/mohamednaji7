@@ -92,6 +92,15 @@
 
 <br />
 
+## 💻 Open Source Contributions
+
+- 🧩 [PR #147](https://github.com/runpod-workers/worker-vllm/pull/147) – Contributed to [`runpod-workers/worker-vllm`](https://github.com/runpod-workers/worker-vllm)  
+  Added integration and environment support for the `bitsandbytes` quantization option based on [vLLM docs](https://docs.vllm.ai/en/stable/quantization/bnb.html):  
+  - Updated `requirements.txt` and resolved compatibility issues  
+  - Modified `README.md` and `worker-config.json` to reflect the new option  
+  - Fixed compatibility issue with `typing-extensions`
+  - Added automatic `quantization` fallback logic in `engine_args.py`  
+s  - Deployed and tested successfully the feature in a RunPod serverless environment
 
 ## 📊 Stats
 
