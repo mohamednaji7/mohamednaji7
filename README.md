@@ -100,7 +100,7 @@
   - Modified `README.md` and `worker-config.json` to reflect the new option  
   - Fixed compatibility issue with `typing-extensions`
   - Added automatic `quantization` fallback logic in `engine_args.py`  
-s  - Deployed and tested successfully the feature in a RunPod serverless environment
+  - Deployed and tested successfully the feature in a RunPod serverless environment
 
 ## 📊 Stats
 
