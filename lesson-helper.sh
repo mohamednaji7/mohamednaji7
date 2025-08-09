@@ -1,5 +1,4 @@
 #!/bin/sh
-
 echo  "You passed: $1"
 echo  "You passed: 2: $2"
 echo  "You passed: 3: $3"
@@ -11,8 +10,10 @@ fi
 
 if [ "$3" = "1" ] || [ "$3" = "create" ] ; then
     echo "Creating lesson directory structure..."
-    mkdir "./$1/L$2"
-    cp "./Lesson tmp/"* "$1/L$2/"
+    #  if mkdir errors (File exists), the cp and rm won’t execute.
+    mkdir "./$1/L$2" &&
+        cp "./Lesson tmp/"* "$1/L$2/" &&
+            rm ./$1/L$2/unit_test.js
 elif [ "$3" = "re-init" ]; then
     echo "Re-init lesson directory structure..."
     mkdir -p "./$1/L$2"
