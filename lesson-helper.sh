@@ -19,5 +19,7 @@ elif [ "$3" = "re-init" ]; then
     cp "./Lesson tmp/"* "$1/L$2"
 else
     echo "running test..."
+    cp "./Lesson tmp/unit_test.js" ./$1/L$2/
     node ./$1/L$2/main_test.js --submit
+    rm ./$1/L$2/unit_test.js
 fi
