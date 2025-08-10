@@ -36,5 +36,20 @@ export const assert = {
     if (actual !== expected) {
       throw new Error(message || `Expected ${expected}, but got ${actual}`);
     }
+  },
+  throws(fn, expectedErrMessage) {
+    let threw = false;
+    try{
+      fn();
+    }catch (error) {
+      threw = true;
+      if(error.message!==expectedErrMessage){
+        throw new Error(`Expected error message "${expectedErrMessage}", but got "${error.message}"`);
+      }
+    }
+    if (!threw) {
+      throw new Error(`Function didn't throw an error.`);
+    }
+
   }
 };
