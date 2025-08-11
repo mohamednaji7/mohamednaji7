@@ -8,3 +8,11 @@ test("bubble-sort", function () {
     expect(arr).toEqual([3, 4, 7, 9, 42, 69, 420]);
 });
 
+test("bubble-sort / one element", function () {
+    const arr = [7];
+
+    debugger;
+    bubble_sort(arr);
+    expect(arr).toEqual([7]);
+});
+
