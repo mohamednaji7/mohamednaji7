@@ -9,19 +9,19 @@ if [ -z "$1" ] || [ -z "$2" ]; then
   exit 1
 fi
 
-if [ "$3" = "1" ] || [ "$3" = "create" ] ; then
+if [ "$3" = "c" ] || [ "$3" = "create" ] ; then
     echo "Creating lesson directory structure..."
     echo ""
     #  if mkdir errors (File exists), the cp and rm won’t execute.
     mkdir "./$1/L$2" &&
         cp "./Lesson tmp/"* "$1/L$2/" &&
             rm ./$1/L$2/unit_test.js
-elif [ "$3" = "re-init" ]; then
+elif [ "$3" = "ri" ] || [ "$3" = "re-init" ]; then
     echo "Re-init lesson directory structure..."
     echo ""
     mkdir -p "./$1/L$2"
     cp "./Lesson tmp/"* "$1/L$2"
-elif  [ "$3" = "2" ] || [ "$3" = "run" ] ; then
+elif  [ "$3" = "r" ] || [ "$3" = "run" ] ; then
     echo "running ./$1/L$2/main.js...\n"
     node ./$1/L$2/main.js
 else
