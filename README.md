@@ -39,11 +39,16 @@ yarn generate
 
 ## 🧪 How to Practice
 
-Once you've set up your repo, practice by running the tests for each exercise. For example, to run the test for `LinearSearchList.ts`:
-
-```bash
-npx jest LinearSearchList.ts
-```
+Once you've set up your repo,  
+1. navigate to the algo files 
+    ```bash
+    cd kata-machine/src/day1
+    ```   
+2. write your solution in the algo file e.g. `LinearSearchList.ts`  
+3. run the tests for each exercise. For example,  
+    ```bash
+    npx jest LinearSearchList.ts
+    ```
 
 ✅ Example output when passing:
 
