@@ -7,7 +7,9 @@ let passedCount = 0;
 
 export function describe(name, callback) {
   currentDescribe = name;
-  console.log(`\n${name}:`);
+  console.log("Your code logs from main.js will displayedd below 3 `-` and above 10 `-`   ")
+  console.log(`\n${name}:\n`);
+
   callback();
   
   console.log(`\nResults: ${passedCount}/${testCount} tests passed`);
@@ -22,10 +24,13 @@ export function describe(name, callback) {
 export function it(name, callback) {
   testCount++;
   try {
+    console.log(" ---")
     callback();
+    console.log(" ------------- ")
     console.log(`  ✓ ${name}`);
     passedCount++;
   } catch (error) {
+    console.log(" ------------- ")
     console.log(`  ✗ ${name}`);
     console.log(`    ${error.message}`);
   }
