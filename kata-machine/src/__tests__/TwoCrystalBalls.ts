@@ -1,6 +1,6 @@
 import two_crystal_balls from "@code/TwoCrystalBalls";
 
-test("two crystal balls", function () {
+test("two crystal balls / true starts at a random position", function () {
 
     const data2 = new Array(100).fill(false);
     data2[data2.length-1] = true;
@@ -12,11 +12,25 @@ test("two crystal balls", function () {
         data[i] = true;
     }
 
-    expect(two_crystal_balls(new Array(1).fill(true))).toEqual(0);
-    expect(two_crystal_balls(new Array(1).fill(false))).toEqual(-1);
-    expect(two_crystal_balls(new Array(10).fill(true))).toEqual(0);
-    expect(two_crystal_balls(data2)).toEqual(data2.length-1);
-    expect(two_crystal_balls(new Array(821).fill(false))).toEqual(-1);
     expect(two_crystal_balls(data)).toEqual(idx);
 });
 
+
+test("two crystal balls / true at the end", function () {
+
+    const data2 = new Array(100).fill(false);
+    data2[data2.length-1] = true;
+    expect(two_crystal_balls(data2)).toEqual(data2.length-1);
+});
+
+test("two crystal balls / array of falses", function () {
+
+    expect(two_crystal_balls(new Array(821).fill(false))).toEqual(-1);
+
+});
+
+test("two crystal balls / array of one element", function () {
+    expect(two_crystal_balls(new Array(1).fill(true))).toEqual(0);
+    expect(two_crystal_balls(new Array(1).fill(false))).toEqual(-1);
+    expect(two_crystal_balls(new Array(10).fill(true))).toEqual(0);
+});
