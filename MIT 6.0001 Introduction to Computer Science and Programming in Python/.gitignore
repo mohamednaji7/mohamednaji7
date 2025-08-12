@@ -1,0 +1,41 @@
+# Assignment-specific
+*.zip
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Environment variable files
+*.env
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs & temp files
+*.log
+*.tmp
+*.temp
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test & coverage outputs
+htmlcov/
+.coverage
+.pytest_cache/
