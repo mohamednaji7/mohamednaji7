@@ -11,6 +11,9 @@ This is the [first course](https://github.com/ossu/computer-science/blob/master/
 
 Below are mappings from MIT 6.0001 **(Fall 2016)** assignments to related LeetCode problems for targeted practice.
 
+
+💡 Tip: I left out some of the harder problems that have a lower acceptance rate (e.g., LC 44: Wildcard Matching — AR = 30.3%, LC 211). You can also ignore problems that require a premium account.
+
 ## PS 0
 🔗 [Assignment Link](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/ps0/) is a an intro.  
 s
