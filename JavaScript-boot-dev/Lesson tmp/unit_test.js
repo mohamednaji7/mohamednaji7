@@ -90,4 +90,10 @@ export const assert = {
       throw new Error(message || `Expected ${JSON.stringify(expected)}, but got ${JSON.stringify(actual)}`);
     }
   }
+  ,
+  greaterThan(actual, expected, message) {
+    if(!(actual > expected) ){
+      throw new Error(message);
+    }
+  }
 };
