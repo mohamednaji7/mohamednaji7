@@ -60,15 +60,13 @@ Ran all test suites matching /LinearSearchList.ts/i.
 ```
 ## 📈 My Progress
 
-Here are the exercises I've completed so far with passing tests:
-
-| Exercise            | Status  |
-|--------------------|---------|
-| LinearSearchList.ts | ✅ Passed |
-| BinarySearchList.ts | ✅ Passed |
-| BubbleSort.ts       | ✅ Passed |
-| Stack.ts            | ✅ Passed |
-| Queue.ts            | ✅ Passed |
+| Exercise | Solution File | Status | Test File |
+|----------|---------------|--------|-----------|
+| Linear Search | [LinearSearchList.ts](./kata-machine/src/day1/LinearSearchList.ts) | ✅ Passed | [LinearSearchList.ts](./kata-machine/src/__tests__/LinearSearchList.ts) |
+| Binary Search | [BinarySearchList.ts](./kata-machine/src/day1/BinarySearchList.ts) | ✅ Passed | [BinarySearchList.ts](./kata-machine/src/__tests__/BinarySearchList.ts) |
+| Bubble Sort | [BubbleSort.ts](./kata-machine/src/day1/BubbleSort.ts) | ✅ Passed | [BubbleSort.ts](./kata-machine/src/__tests__/BubbleSort.ts) |
+| Stack | [Stack.ts](./kata-machine/src/day1/Stack.ts) | ✅ Passed | [Stack.ts](./kata-machine/src/__tests__/Stack.ts) |
+| Queue | [Queue.ts](./kata-machine/src/day1/Queue.ts) | ✅ Passed | [Queue.ts](./kata-machine/src/__tests__/Queue.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
