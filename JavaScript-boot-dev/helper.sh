@@ -4,10 +4,36 @@ echo  "lesson: $2"
 echo  "arg: $3"
 echo ""
 
-if [ -z "$1" ] || [ -z "$2" ]; then
-  echo "Usage: $0 <chapter> <lesson>"
-  exit 1
+
+if [ -z "$1" ] && [ -z "$2" ]; then
+  echo "Running all tests..."
+  echo ""
+  
+  # Table header
+  printf "%-22s | %-25s | %s\n" "Status (All passed?)" "Lesson" "Results (tests passed)"
+  printf -- "-------------------------------------------------------------------------------\n"
+  find . -type f -path "./CH*/L*/main_test.js" | sort -V | while read testfile; do
+#   find . -type f -path "./CH*/L*/main_test.js" | while read testfile; do
+    dir=$(dirname "$testfile")
+    
+    cp "./Lesson tmp/unit_test.js" "$dir/"
+    
+    output=$(node "$dir/main_test.js" --submit 2>&1)
+    
+    # Extract only the numbers like 3/3 or 4/7
+    result=$(echo "$output" | grep "Results:" | sed -E 's/^Results: ([0-9]+\/[0-9]+).*/\1/')
+    
+    if echo "$output" | grep -q "✅"; then
+      printf "%-22s | %-25s | %s\n" "✅" "$dir" "$result"
+    elif echo "$output" | grep -q "❌"; then
+      printf "%-22s | %-25s | %s\n" "❌" "$dir" "$result"
+    fi
+    
+    rm "$dir/unit_test.js"
+  done
+  exit 0
 fi
+
 
 if [ "$3" = "c" ] || [ "$3" = "create" ] ; then
     echo "Creating lesson directory structure..."
