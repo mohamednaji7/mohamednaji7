@@ -25,9 +25,14 @@ elif  [ "$3" = "r" ] || [ "$3" = "run" ] ; then
     echo "running ./$1/L$2/main.js...\n"
     node ./$1/L$2/main.js
 else
+  if [ -f "./$1/L$2/main_test.js" ]; then
     echo "running test..."
     echo ""
     cp "./Lesson tmp/unit_test.js" ./$1/L$2/
     node ./$1/L$2/main_test.js --submit
     rm ./$1/L$2/unit_test.js
+  else
+    echo "No test file found for $1/L$2"
+  fi
+    
 fi
