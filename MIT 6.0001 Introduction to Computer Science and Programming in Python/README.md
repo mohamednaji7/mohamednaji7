@@ -16,7 +16,7 @@ Below are mappings from MIT 6.0001 **(Fall 2016)** assignments to related LeetCo
 
 ## PS 0
 🔗 [Assignment Link](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/ps0/) is a an intro.  
-s
+
 
 ## PS 1  
 🔗 [Assignment Link](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/mit6_0001f16_ps1/)
@@ -69,6 +69,45 @@ s
 ## PS 5 — RSS Feed Filter (OOP)  
 🔗 [Assignment Link](https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/resources/ps5/)
 
+
+
+**Focus**: Object-oriented programming, inheritance, abstract classes, polymorphism
+
+This problem set introduces object-oriented programming concepts through building an RSS feed filter system. Students implement various trigger classes that filter news stories based on different criteria.
+
+### Key Concepts Practiced:
+- **Class Design**: Creating classes with proper encapsulation
+- **Inheritance**: Building class hierarchies with shared functionality  
+- **Abstract Methods**: Defining interfaces that subclasses must implement
+- **Polymorphism**: Using different trigger types through a common interface
+- **String Processing**: Complex text parsing and matching algorithms
+- **Composition**: Combining simple triggers into complex filtering logic
+
+### Problem Breakdown:
+
+| Problem | Description | Key Learning |
+|---------|-------------|--------------|
+| 1 | **NewsStory Class** | Basic class construction and getter methods |
+| 2 | **PhraseTrigger (Abstract)** | Abstract base class, complex string matching algorithm |
+| 3 | **TitleTrigger** | Inheritance, method override |
+| 4 | **DescriptionTrigger** | More inheritance practice |
+| 5 | **TimeTrigger (Abstract)** | Working with datetime objects, abstract classes |
+| 6 | **Before/AfterTrigger** | Date comparison logic |
+| 7 | **NotTrigger** | Composition pattern, negation logic |
+| 8 | **AndTrigger** | Boolean AND logic with multiple triggers |
+| 9 | **OrTrigger** | Boolean OR logic with multiple triggers |
+| 10 | **filter_stories Function** | Applying triggers to filter data |
+| 11 | **read_trigger_config** | File parsing, dynamic object creation |
+
+
+### Related LeetCode Problems:
+- [1603. Design Parking System](https://leetcode.com/problems/design-parking-system/) - Basic OOP design
+- [146. LRU Cache](https://leetcode.com/problems/lru-cache/) - Advanced OOP patterns
+- [28. Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/) - String matching
+- [211. Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/) - Abstract methods & polymorphism
+<details>
+<summary>more problems?</summary>
+
 | Concept | MIT Task | LeetCode Problem | Concept Practiced |
 |---------|----------|------------------|-------------------|
 | OOP Design | Trigger Classes | [1603. Design Parking System](https://leetcode.com/problems/design-parking-system/) | Simple class with state |
@@ -90,3 +129,67 @@ s
 | Config Parsing | `read_trigger_config` | [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions/) | Log parsing |
 | Config Parsing | `read_trigger_config` | [722. Remove Comments](https://leetcode.com/problems/remove-comments/) | Comment removal logic |
 
+
+
+</details>
+
+### Current Progress:
+
+**Status**: 🚧 In Progress
+- ✅ **Problem 1**: NewsStory Class - Complete  
+- ✅ **Problem 2**: PhraseTrigger - Complete
+- ✅ **Problem 3**: TitleTrigger - Complete
+
+
+**last tester (ps5_test-pretty.py) output**: 
+```
+🎓============================================================================🎓
+🎯 MIT 6.0001 Problem Set 5: RSS Feed Filter Test Suite 🎯
+🎓============================================================================🎓
+📅 Test Run: 2025-08-15 01:11:19
+🔧 Debug Output: OFF | Test Details: ON
+🌟 Let's see how you're doing! 🌟
+
+🧪 RUNNING TESTS...
+──────────────────────────────
+📋 Test Details:
+────────────────────
+  testNewsStoryConstructor (ps5_test.ProblemSet5NewsStory.testNewsStoryConstructor) ✅
+  testNewsStoryGetGuid (ps5_test.ProblemSet5NewsStory.testNewsStoryGetGuid) ✅
+  testNewsStoryGetLink (ps5_test.ProblemSet5NewsStory.testNewsStoryGetLink) ✅
+  testNewsStoryGetTime (ps5_test.ProblemSet5NewsStory.testNewsStoryGetTime) ✅
+  testNewsStoryGetTitle (ps5_test.ProblemSet5NewsStory.testNewsStoryGetTitle) ✅
+  testNewsStoryGetdescription (ps5_test.ProblemSet5NewsStory.testNewsStoryGetdescription) ✅
+  test1TitleTrigger (ps5_test.ProblemSet5.test1TitleTrigger) ✅
+  test2DescriptionTrigger (ps5_test.ProblemSet5.test2DescriptionTrigger) ❌ ERROR
+  test3BeforeAndAfterTrigger (ps5_test.ProblemSet5.test3BeforeAndAfterTrigger) ❌ ERROR
+  test3altBeforeAndAfterTrigger (ps5_test.ProblemSet5.test3altBeforeAndAfterTrigger) ❌ ERROR
+  test4NotTrigger (ps5_test.ProblemSet5.test4NotTrigger) ❌ ERROR
+  test5AndTrigger (ps5_test.ProblemSet5.test5AndTrigger) ❌ ERROR
+  test6OrTrigger (ps5_test.ProblemSet5.test6OrTrigger) ❌ ERROR
+  test7FilterStories (ps5_test.ProblemSet5.test7FilterStories) ❌ ERROR
+  test8FilterStories2 (ps5_test.ProblemSet5.test8FilterStories2) ❌ FAILED
+
+
+🎉============================================================================🎉
+📊 TEST RESULTS SUMMARY
+🎉============================================================================🎉
+┌──────────────────────────────────────────────────┐
+│  📈 Total Tests:                              15 │
+│  ✅ Passed:                                   7 │
+│  ❌ Failed:                                   1 │
+│  💥 Errors:                                   7 │
+└──────────────────────────────────────────────────┘
+
+💪 Progress: 46.7%
+[🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜]
+
+🔥 Getting started! Every expert was once a beginner! 🔥
+
+⚡ Tests completed in 0.03 seconds
+💡 Run with --debug to see detailed debug output
+🎓============================================================================🎓
+
+💪 Keep coding! Use the error details above to fix issues! 💪
+➜  PS5 git:(main) ✗ 
+```

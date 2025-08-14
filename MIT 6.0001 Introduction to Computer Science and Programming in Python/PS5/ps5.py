@@ -92,9 +92,72 @@ class Trigger(object):
 
 # Problem 2
 # TODO: PhraseTrigger
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase 
+
+
+    def is_phrase_in(self, text):
+        text = text.lower()
+        phrase = self.phrase.lower()
+        phrase_splits = phrase.split()
+        print("\n")
+        print("phrase:", phrase)
+        print("text:", text)
+
+        text_splits = []
+        word = ""
+        for ch in text:
+            if ch.isalpha():
+                word += ch
+            elif word:
+                text_splits.append(word)
+                word = ""
+        # append last word if text ends with a letter
+        if word:
+            text_splits.append(word)
+            
+        print("text_splits:", text_splits )
+
+        i=0
+        comparing = False
+        start_compare_i = -1
+        comparing_i = -1
+        while i < len(text_splits) :
+            print("i", i)
+            if comparing:
+                if comparing_i+i < len(text_splits) and text_splits[comparing_i+i] == phrase_splits[comparing_i]:
+                    comparing_i +=1
+                    if comparing_i == len(phrase_splits):
+                        print("return", True)
+                        return True
+                else:
+                    comparing = False
+                    comparing_i = -1
+                    i = start_compare_i + 1 
+                    continue
+            elif text_splits[i] == phrase_splits[0]:
+                comparing = True
+                start_compare_i = i
+                comparing_i = 1
+                
+            else:
+                i+=1   
+                
+        print("return", False)
+        return False
+
+
 
 # Problem 3
 # TODO: TitleTrigger
+class TitleTrigger(PhraseTrigger):
+    def __init__(self, phrase):
+        super().__init__(phrase)
+
+    def evaluate(self, story):
+        return super().is_phrase_in(story.title)
+    
 
 # Problem 4
 # TODO: DescriptionTrigger
