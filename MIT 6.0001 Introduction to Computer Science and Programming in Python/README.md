@@ -133,6 +133,12 @@ This problem set introduces object-oriented programming concepts through buildin
 
 </details>
 
+### My Solution
+
+- **Solution file:** [./PS5/ps5.py](./PS5/ps5.py)  
+- **Tests:** [./PS5/ps5_test.py](./PS5/ps5_test.py)  
+- **Pretty printing tests:** [./PS5/ps5_test-pretty.py](./PS5/ps5_test-pretty.py)  
+
 ### Current Progress:
 
 **Status**: 🚧 In Progress
