@@ -58,7 +58,7 @@ Snapshots:   0 total
 Time:        0.945 s
 Ran all test suites matching /LinearSearchList.ts/i.
 ```
-## ✅ My Progress
+## 📈 My Progress
 
 Here are the exercises I've completed so far with passing tests:
 
@@ -68,6 +68,7 @@ Here are the exercises I've completed so far with passing tests:
 | BinarySearchList.ts | ✅ Passed |
 | BubbleSort.ts       | ✅ Passed |
 | Stack.ts            | ✅ Passed |
+| Queue.ts            | ✅ Passed |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -126,4 +127,16 @@ Time:        0.99 s, estimated 1 s
 Ran all test suites matching /Stack.ts/i.
 ```
 
+### Queue.ts
+```➜  kata-machine git:(main) ✗ npx jest Queue.ts
+ PASS  src/__tests__/Queue.ts
+  ✓ queue (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.062 s
+Ran all test suites matching /Queue.ts/i.
+➜  kata-machine git:(main) ✗ 
+```
 </details>
