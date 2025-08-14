@@ -73,47 +73,45 @@ Status (All passed?)   | Lesson                    | Results (tests passed)
 ✅                    | ./CH13/L5                 | 1/1
 ➜  JavaScript-boot-dev git:(main) ✗ 
 ```
-## 📚 JavaScript Boot Dev – Solutions & Tests
 
-| Lesson | Solution File | Test File |
-|--------|---------------|-----------|
-| CH4/L1 | [main.js](./CH4/L1/main.js) | [main_test.js](./CH4/L1/main_test.js) |
-| CH4/L3 | [main.js](./CH4/L3/main.js) | [main_test.js](./CH4/L3/main_test.js) |
-| CH4/L4 | [main.js](./CH4/L4/main.js) | [main_test.js](./CH4/L4/main_test.js) |
-| CH4/L6 | [main.js](./CH4/L6/main.js) | [main_test.js](./CH4/L6/main_test.js) |
-| CH4/L9 | [main.js](./CH4/L9/main.js) | [main_test.js](./CH4/L9/main_test.js) |
-| CH4/L10 | [main.js](./CH4/L10/main.js) | [main_test.js](./CH4/L10/main_test.js) |
-| CH4/L12 | [main.js](./CH4/L12/main.js) | [main_test.js](./CH4/L12/main_test.js) |
-| CH4/L15 | [main.js](./CH4/L15/main.js) | [main_test.js](./CH4/L15/main_test.js) |
-| CH4/L16 | [main.js](./CH4/L16/main.js) | [main_test.js](./CH4/L16/main_test.js) |
-| CH4/L17 | [main.js](./CH4/L17/main.js) | [main_test.js](./CH4/L17/main_test.js) |
-| CH5/L1 | [main.js](./CH5/L1/main.js) | [main_test.js](./CH5/L1/main_test.js) |
-| CH5/L3 | [main.js](./CH5/L3/main.js) | [main_test.js](./CH5/L3/main_test.js) |
-| CH5/L4 | [main.js](./CH5/L4/main.js) | [main_test.js](./CH5/L4/main_test.js) |
-| CH5/L5 | [main.js](./CH5/L5/main.js) | [main_test.js](./CH5/L5/main_test.js) |
-| CH5/L6 | [main.js](./CH5/L6/main.js) | [main_test.js](./CH5/L6/main_test.js) |
-| CH6/L1 | [main.js](./CH6/L1/main.js) | [main_test.js](./CH6/L1/main_test.js) |
-| CH6/L2 | [main.js](./CH6/L2/main.js) | [main_test.js](./CH6/L2/main_test.js) |
-| CH7/L1 | [main.js](./CH7/L1/main.js) | [main_test.js](./CH7/L1/main_test.js) |
-| CH7/L2 | [main.js](./CH7/L2/main.js) | [main_test.js](./CH7/L2/main_test.js) |
-| CH7/L3 | [main.js](./CH7/L3/main.js) | [main_test.js](./CH7/L3/main_test.js) |
-| CH7/L4 | [main.js](./CH7/L4/main.js) | [main_test.js](./CH7/L4/main_test.js) |
-| CH8/L2 | [main.js](./CH8/L2/main.js) | [main_test.js](./CH8/L2/main_test.js) |
-| CH8/L3 | [main.js](./CH8/L3/main.js) | [main_test.js](./CH8/L3/main_test.js) |
-| CH8/L4 | [main.js](./CH8/L4/main.js) | [main_test.js](./CH8/L4/main_test.js) |
-| CH8/L5 | [main.js](./CH8/L5/main.js) | [main_test.js](./CH8/L5/main_test.js) |
-| CH8/L6 | [main.js](./CH8/L6/main.js) | [main_test.js](./CH8/L6/main_test.js) |
-| CH8/L9 | [main.js](./CH8/L9/main.js) | [main_test.js](./CH8/L9/main_test.js) |
-| CH9/L1 | [main.js](./CH9/L1/main.js) | [main_test.js](./CH9/L1/main_test.js) |
-| CH9/L4 | [main.js](./CH9/L4/main.js) | [main_test.js](./CH9/L4/main_test.js) |
-| CH10/L1 | [main.js](./CH10/L1/main.js) | [main_test.js](./CH10/L1/main_test.js) |
-| CH11/L1 | [main.js](./CH11/L1/main.js) | [main_test.js](./CH11/L1/main_test.js) |
-| CH11/L2 | [main.js](./CH11/L2/main.js) | [main_test.js](./CH11/L2/main_test.js) |
-| CH11/L3 | [main.js](./CH11/L3/main.js) | [main_test.js](./CH11/L3/main_test.js) |
-| CH12/L5 | [main.js](./CH12/L5/main.js) | [main_test.js](./CH12/L5/main_test.js) |
-| CH12/L9 | [main.js](./CH12/L9/main.js) | [main_test.js](./CH12/L9/main_test.js) |
-| CH13/L2 | [main.js](./CH13/L2/main.js) | [main_test.js](./CH13/L2/main_test.js) |
-| CH13/L5 | [main.js](./CH13/L5/main.js) | [main_test.js](./CH13/L5/main_test.js) |
+## Lesson Links
+- CH4 / L1 → [Solution](./CH4/L1/main.js) | [Test](./CH4/L1/main_test.js)
+- CH4 / L3 → [Solution](./CH4/L3/main.js) | [Test](./CH4/L3/main_test.js)
+- CH4 / L4 → [Solution](./CH4/L4/main.js) | [Test](./CH4/L4/main_test.js)
+- CH4 / L6 → [Solution](./CH4/L6/main.js) | [Test](./CH4/L6/main_test.js)
+- CH4 / L9 → [Solution](./CH4/L9/main.js) | [Test](./CH4/L9/main_test.js)
+- CH4 / L10 → [Solution](./CH4/L10/main.js) | [Test](./CH4/L10/main_test.js)
+- CH4 / L12 → [Solution](./CH4/L12/main.js) | [Test](./CH4/L12/main_test.js)
+- CH4 / L15 → [Solution](./CH4/L15/main.js) | [Test](./CH4/L15/main_test.js)
+- CH4 / L16 → [Solution](./CH4/L16/main.js) | [Test](./CH4/L16/main_test.js)
+- CH4 / L17 → [Solution](./CH4/L17/main.js) | [Test](./CH4/L17/main_test.js)
+- CH5 / L1 → [Solution](./CH5/L1/main.js) | [Test](./CH5/L1/main_test.js)
+- CH5 / L3 → [Solution](./CH5/L3/main.js) | [Test](./CH5/L3/main_test.js)
+- CH5 / L4 → [Solution](./CH5/L4/main.js) | [Test](./CH5/L4/main_test.js)
+- CH5 / L5 → [Solution](./CH5/L5/main.js) | [Test](./CH5/L5/main_test.js)
+- CH5 / L6 → [Solution](./CH5/L6/main.js) | [Test](./CH5/L6/main_test.js)
+- CH6 / L1 → [Solution](./CH6/L1/main.js) | [Test](./CH6/L1/main_test.js)
+- CH6 / L2 → [Solution](./CH6/L2/main.js) | [Test](./CH6/L2/main_test.js)
+- CH7 / L1 → [Solution](./CH7/L1/main.js) | [Test](./CH7/L1/main_test.js)
+- CH7 / L2 → [Solution](./CH7/L2/main.js) | [Test](./CH7/L2/main_test.js)
+- CH7 / L3 → [Solution](./CH7/L3/main.js) | [Test](./CH7/L3/main_test.js)
+- CH7 / L4 → [Solution](./CH7/L4/main.js) | [Test](./CH7/L4/main_test.js)
+- CH8 / L2 → [Solution](./CH8/L2/main.js) | [Test](./CH8/L2/main_test.js)
+- CH8 / L3 → [Solution](./CH8/L3/main.js) | [Test](./CH8/L3/main_test.js)
+- CH8 / L4 → [Solution](./CH8/L4/main.js) | [Test](./CH8/L4/main_test.js)
+- CH8 / L5 → [Solution](./CH8/L5/main.js) | [Test](./CH8/L5/main_test.js)
+- CH8 / L6 → [Solution](./CH8/L6/main.js) | [Test](./CH8/L6/main_test.js)
+- CH8 / L9 → [Solution](./CH8/L9/main.js) | [Test](./CH8/L9/main_test.js)
+- CH9 / L1 → [Solution](./CH9/L1/main.js) | [Test](./CH9/L1/main_test.js)
+- CH9 / L4 → [Solution](./CH9/L4/main.js) | [Test](./CH9/L4/main_test.js)
+- CH10 / L1 → [Solution](./CH10/L1/main.js) | [Test](./CH10/L1/main_test.js)
+- CH11 / L1 → [Solution](./CH11/L1/main.js) | [Test](./CH11/L1/main_test.js)
+- CH11 / L2 → [Solution](./CH11/L2/main.js) | [Test](./CH11/L2/main_test.js)
+- CH11 / L3 → [Solution](./CH11/L3/main.js) | [Test](./CH11/L3/main_test.js)
+- CH12 / L5 → [Solution](./CH12/L5/main.js) | [Test](./CH12/L5/main_test.js)
+- CH12 / L9 → [Solution](./CH12/L9/main.js) | [Test](./CH12/L9/main_test.js)
+- CH13 / L2 → [Solution](./CH13/L2/main.js) | [Test](./CH13/L2/main_test.js)
+- CH13 / L5 → [Solution](./CH13/L5/main.js) | [Test](./CH13/L5/main_test.js)
 
 
 
