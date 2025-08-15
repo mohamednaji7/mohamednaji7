@@ -126,15 +126,25 @@ Ran all test suites matching /Stack.ts/i.
 ```
 
 ### Queue.ts
-```➜  kata-machine git:(main) ✗ npx jest Queue.ts
+```bash
+➜  kata-machine git:(main) npx jest Queue.ts
  PASS  src/__tests__/Queue.ts
   ✓ queue (3 ms)
+  ✓ Case 1 (1 ms)
+  ✓ Case 2 (6 ms)
+  ✓ Case 1 (includes empty)
+  ✓ Case 2 (includes empty) (1 ms)
+  ✓ Case 3 (includes empty) (9 ms)
+  ✓ Case 4 (includes empty) (10 ms)
+  ✓ Case 5 (includes empty) (1 ms)
+  ✓ Case 6 (includes empty) (1 ms)
+  ✓ Case 7 (includes empty) (7 ms)
 
 Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        1.062 s
+Time:        0.97 s, estimated 1 s
 Ran all test suites matching /Queue.ts/i.
-➜  kata-machine git:(main) ✗ 
+➜  kata-machine git:(main) 
 ```
 </details>
