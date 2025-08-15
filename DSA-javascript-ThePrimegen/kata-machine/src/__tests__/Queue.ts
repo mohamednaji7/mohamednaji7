@@ -1,5 +1,9 @@
 import Queue from "@code/Queue";
 
+
+const hasIsEmpty = "isEmpty" in Queue.prototype &&
+    typeof (Queue.prototype as unknown as Record<string, unknown>)["isEmpty"] === "function";
+    
 test("queue", function () {
     const list = new Queue<number>();
 
@@ -52,8 +56,7 @@ function runTest(commands: string[], args: any[], expected: any[]) {
                 break;
 
             case "empty":
-                if ("isEmpty" in Queue.prototype &&
-                    typeof (Queue.prototype as unknown as Record<string, unknown>)["isEmpty"] === "function") {
+                if (hasIsEmpty) {
                     const fn = (q as unknown as Record<string, unknown>)["isEmpty"] as Function;
                     result = fn.call(q);
                 } else {
@@ -64,8 +67,7 @@ function runTest(commands: string[], args: any[], expected: any[]) {
                 throw new Error(`Unknown command: ${cmd}`);
         }
         if(cmd == "empty"){
-            if ("isEmpty" in Queue.prototype &&
-                typeof (Queue.prototype as unknown as Record<string, unknown>)["isEmpty"] === "function") {
+            if (hasIsEmpty) {
 
                 expect(result).toEqual(expected[i]);
             } else {
@@ -151,7 +153,8 @@ const all_test_cases_include_empty: QueueTestCase[] = [
 
 let i = 0
 for(const testCase of all_test_cases_include_empty){
-    test(`Case ${i+1} (includes empty)`, () => {
+    
+    test(`Case ${i+1+2} `+(hasIsEmpty?"(includes empty)":""), () => {
         runTest(
             testCase[0],
             testCase[1],
