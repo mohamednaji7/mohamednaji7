@@ -67,6 +67,7 @@ Ran all test suites matching /LinearSearchList.ts/i.
 | Bubble Sort | [BubbleSort.ts](./kata-machine/src/day1/BubbleSort.ts) | ✅ Passed | [BubbleSort.ts](./kata-machine/src/__tests__/BubbleSort.ts) |
 | Stack | [Stack.ts](./kata-machine/src/day1/Stack.ts) | ✅ Passed | [Stack.ts](./kata-machine/src/__tests__/Stack.ts) |
 | Queue | [Queue.ts](./kata-machine/src/day1/Queue.ts) | ✅ Passed | [Queue.ts](./kata-machine/src/__tests__/Queue.ts) |
+| Quick Sort | [QuickSort.ts](./kata-machine/src/day1/QuickSort.ts) | ✅ Passed | [QuickSort.ts](./kata-machine/src/__tests__/QuickSort.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -147,4 +148,24 @@ Time:        0.97 s, estimated 1 s
 Ran all test suites matching /Queue.ts/i.
 ➜  kata-machine git:(main) 
 ```
+### QuickSort.ts 
+```bash
+➜  kata-machine git:(main) ✗ npx jest QuickSort.ts  
+ PASS  src/__tests__/QuickSort.ts
+  ✓ quick-sort (2 ms)
+  ✓ quick-sort - LC/TC: 912 / 1 (1 ms)
+  ✓ quick-sort - LC/TC: 912 / 2 (1 ms)
+  ✓ quick-sort - LC/TC: 912 / 3
+  ✓ quick-sort - LC/TC: 912 / 4 (21 ms)
+  ✓ quick-sort - LC/TC: 912 / 5
+  ✓ quick-sort - LC/TC: 912 / 6 (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       7 passed, 7 total
+Snapshots:   0 total
+Time:        0.932 s, estimated 1 s
+Ran all test suites matching /QuickSort.ts/i.
+➜  kata-machine git:(main) ✗ 
+```
+
 </details>
