@@ -1,0 +1,7 @@
+id  user_id  recipient_id  sender_id  note                        amount  was_successful
+--  -------  ------------  ---------  --------------------------  ------  --------------
+1   1                      4          Testing transaction!        10.5    1             
+2   1        10                       Thanks for lunch!           9.56    1             
+3   1                      2          Car problems                256.21  0             
+4   1        8                        Happy birthday!!            50      1             
+9   1                      23         thanks for lunch yesterday  10      1             
