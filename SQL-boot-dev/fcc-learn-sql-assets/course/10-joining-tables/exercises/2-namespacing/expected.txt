@@ -1,0 +1,15 @@
+name      age  country_name 
+--------  ---  -------------
+Samantha  29   Brazil       
+Albert    55   Brazil       
+John      39   Canada       
+Darren    15   Canada       
+Ram       42   India        
+Al        39   Japan        
+David     34   United States
+Hunter    30   United States
+Allan     27   United States
+Lance     20   United States
+Tiffany   28   United States
+Lane      27   United States
+Alvin     27   United States

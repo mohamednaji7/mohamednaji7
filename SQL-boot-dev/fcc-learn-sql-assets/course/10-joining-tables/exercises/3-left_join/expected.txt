@@ -1,0 +1,15 @@
+name      sum     count
+--------  ------  -----
+Allan     305.99  5    
+Samantha  100     1    
+Lane      85.39   3    
+Lance     50      1    
+Tiffany   47.42   1    
+David     10      1    
+Hunter    9.56    1    
+John              0    
+Ram               0    
+Darren            0    
+Albert            0    
+Alvin             0    
+Al                0    

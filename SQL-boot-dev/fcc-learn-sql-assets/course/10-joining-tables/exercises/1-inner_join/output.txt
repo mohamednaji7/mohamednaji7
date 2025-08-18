@@ -1,0 +1,15 @@
+id  name      age  country_code  username    password            is_admin  id  country_code  name         
+--  --------  ---  ------------  ----------  ------------------  --------  --  ------------  -------------
+1   David     34   US            DavidDev    insertPractice      0         1   US            United States
+2   Samantha  29   BR            Sammy93     addingRecords!      0         5   BR            Brazil       
+3   John      39   CA            Jjdev21     welovebootdev       0         2   CA            Canada       
+4   Ram       42   IN            Ram11c      thisSQLcourserocks  0         3   IN            India        
+5   Hunter    30   US            Hdev92      backendDev          0         1   US            United States
+6   Allan     27   US            Alires      iLoveB00tdev        1         1   US            United States
+7   Lance     20   US            LanChr      b00tdevisbest       0         1   US            United States
+8   Tiffany   28   US            Tifferoon   autoincrement       1         1   US            United States
+9   Lane      27   US            wagslane    update_me           0         1   US            United States
+10  Darren    15   CA            Dshan       found_me            0         2   CA            Canada       
+11  Albert    55   BR            BertDev     one_al_name         0         5   BR            Brazil       
+12  Alvin     27   US            AlvinA27    easter_egg          0         1   US            United States
+13  Al        39   JP            quickCoder  snake_case          0         4   JP            Japan        

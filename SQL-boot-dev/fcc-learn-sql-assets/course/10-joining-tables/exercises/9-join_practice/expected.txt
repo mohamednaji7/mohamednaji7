@@ -1,0 +1,3 @@
+id  name   age  username  country_name   balance
+--  -----  ---  --------  -------------  -------
+6   Allan  27   Alires    United States  305.99 
