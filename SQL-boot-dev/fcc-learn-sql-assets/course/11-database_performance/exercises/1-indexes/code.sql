@@ -5,6 +5,7 @@ CREATE TABLE users (
     age INTEGER
 );
 
+CREATE INDEX email_idx on users(email);
 -- ? --
 
 -- TEST SUITE, DON'T TOUCH BELOW THIS LINE --

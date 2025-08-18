@@ -1,0 +1,3 @@
+type   name                      tbl_name    
+-----  ------------------------  ------------
+index  user_id_recipient_id_idx  transactions
