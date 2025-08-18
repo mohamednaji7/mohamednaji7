@@ -1,0 +1,6 @@
+id  name            num_employees  size 
+--  --------------  -------------  -----
+1   Pfizer          10000          large
+2   Johnny's Diner  4              small
+3   Joe's Cafe      12             small
+4   Walmart         1000           large

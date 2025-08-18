@@ -10,10 +10,13 @@ CREATE TABLE users (
 CREATE TABLE countries (
   id INTEGER PRIMARY KEY,
   country_code TEXT,
-  name TEXT,
-  user_id INTEGER,
-  FOREIGN KEY (country_code)
-  REFERENCES users (id)
+  name TEXT
+);
+
+CREATE TABLE users_countries (
+  user_id INTEGER NOT NULL,
+  country_id INTEGER NOT NULL,
+  UNIQUE(user_id, country_id)
 );
 
 -- Don't touch below this line --
