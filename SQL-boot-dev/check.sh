@@ -20,25 +20,25 @@ sqlite3 "$DB_FILE_USER" < "$SETUP_FILE"
 sqlite3 "$DB_FILE" < "$SETUP_FILE"
 
 # Step 2: Run student's solution and save output
-sqlite3 "$DB_FILE_USER" < "$SOLUTION_FILE" > "$BASE_DIR/output.txt"
+sqlite3 -cmd ".headers on" -cmd ".mode column" "$DB_FILE_USER" < "$SOLUTION_FILE" > "$BASE_DIR/output.txt"
 
 # Step 3: Run expected solution and save output
-sqlite3 "$DB_FILE" < "$COMPLETE_FILE" > "$BASE_DIR/expected.txt"
+sqlite3 -cmd ".headers on" -cmd ".mode column" "$DB_FILE" < "$COMPLETE_FILE" > "$BASE_DIR/expected.txt"
+
 
 # Step 4: Compare outputs
 if diff -q "$BASE_DIR/output.txt" "$BASE_DIR/expected.txt" > /dev/null; then
-    echo "Your Output -----------"
+    echo "Your Output:"
     cat "$BASE_DIR/output.txt"
-    echo "-----------------------"
     echo ""
     echo "✅ Correct solution!"
 else
-    echo "Your Output -----------"
+    echo "Your Output:"
     cat "$BASE_DIR/output.txt"
-    echo "-----------------------"
-    echo "Expected Output -------"
+    echo ""
+    echo "Expected Output:"
     cat "$BASE_DIR/expected.txt"
-    echo "-----------------------"
+    echo ""
     echo ""
     echo "❌ Incorrect solution!"
 fi
