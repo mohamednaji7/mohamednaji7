@@ -1,0 +1,6 @@
+David|34|US
+John|39|CA
+Hunter|30|MX
+Allan|27|US
+Tiffany|28|US
+Darren|15|CA
