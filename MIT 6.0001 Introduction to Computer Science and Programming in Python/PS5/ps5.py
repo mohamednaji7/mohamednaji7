@@ -98,12 +98,14 @@ class PhraseTrigger(Trigger):
 
 
     def is_phrase_in(self, text):
+        DEBUG = False
+
         text = text.lower()
         phrase = self.phrase.lower()
         phrase_splits = phrase.split()
-        print("\n")
-        print("phrase:", phrase)
-        print("text:", text)
+        if DEBUG: print("\n")
+        if DEBUG: print("phrase:", phrase)
+        if DEBUG: print("text:", text)
 
         text_splits = []
         word = ""
@@ -117,19 +119,19 @@ class PhraseTrigger(Trigger):
         if word:
             text_splits.append(word)
             
-        print("text_splits:", text_splits )
+        if DEBUG: print("text_splits:", text_splits )
 
         i=0
         comparing = False
         start_compare_i = -1
         comparing_i = -1
         while i < len(text_splits) :
-            print("i", i)
+            if DEBUG: print("i", i)
             if comparing:
                 if comparing_i+i < len(text_splits) and text_splits[comparing_i+i] == phrase_splits[comparing_i]:
                     comparing_i +=1
                     if comparing_i == len(phrase_splits):
-                        print("return", True)
+                        if DEBUG: print("return", True)
                         return True
                 else:
                     comparing = False
@@ -144,7 +146,7 @@ class PhraseTrigger(Trigger):
             else:
                 i+=1   
                 
-        print("return", False)
+        if DEBUG: print("return", False)
         return False
 
 
@@ -156,11 +158,17 @@ class TitleTrigger(PhraseTrigger):
         super().__init__(phrase)
 
     def evaluate(self, story):
-        return super().is_phrase_in(story.title)
+        return super().is_phrase_in(story.get_title())
     
 
 # Problem 4
 # TODO: DescriptionTrigger
+class DescriptionTrigger(PhraseTrigger):
+    def __init__(self, phrase):
+        super().__init__(phrase)
+    
+    def evaluate(self, story):
+        return super().is_phrase_in(story.get_description())
 
 # TIME TRIGGERS
 
@@ -169,23 +177,78 @@ class TitleTrigger(PhraseTrigger):
 # Constructor:
 #        Input: Time has to be in EST and in the format of "%d %b %Y %H:%M:%S".
 #        Convert time from string to a datetime before saving it as an attribute.
+class TimeTrigger(Trigger):
+    def __init__(self, EST_time_str):
+
+        pattern = "%d %b %Y %H:%M:%S"
+        self.tirgger_dt = datetime.strptime(EST_time_str, pattern)
+
 
 # Problem 6
 # TODO: BeforeTrigger and AfterTrigger
+class BeforeTrigger(TimeTrigger):
+    def __init__(self, EST_time_str):
+        super().__init__(EST_time_str)
+    
+    def evaluate(self, story):
+        DEBUG = False
+        if DEBUG: print("BeforeTrigger", "evaluate")
 
+        story_datetime = story.get_pubdate()
+
+        # normalize story_datetime to naive
+        if story_datetime.tzinfo is not None:
+            story_datetime = story_datetime.replace(tzinfo=None)
+        if DEBUG: print("story_datetime:", story_datetime)
+        if DEBUG: print("self.tirgger_dt:", self.tirgger_dt)
+        return story_datetime < self.tirgger_dt
+
+class AfterTrigger(TimeTrigger):
+    def __init__(self, EST_time_str):
+        super().__init__(EST_time_str)
+    
+    def evaluate(self, story):
+        DEBUG = False
+        if DEBUG: print("AfterTrigger", "evaluate")
+        story_datetime = story.get_pubdate()
+
+        # normalize story_datetime to naive
+        if story_datetime.tzinfo is not None:
+            story_datetime = story_datetime.replace(tzinfo=None)
+        if DEBUG: print("story_datetime:", story_datetime)
+        if DEBUG: print("self.tirgger_dt:", self.tirgger_dt)
+        return story_datetime > self.tirgger_dt
 
 # COMPOSITE TRIGGERS
 
 # Problem 7
 # TODO: NotTrigger
+class NotTrigger(Trigger):
+    def __init__(self, T):
+        self.T = T
+    def evaluate(self, x):
+        return not self.T.evaluate(x)
 
 # Problem 8
 # TODO: AndTrigger
+class AndTrigger(Trigger):
+    def __init__(self, T1, T2):
+        self.T1 = T1
+        self.T2 = T2
+        
+    def evaluate(self, x):
+        return self.T1.evaluate(x) and self.T2.evaluate(x)
 
 # Problem 9
 # TODO: OrTrigger
 
-
+class OrTrigger(Trigger):
+    def __init__(self, T1, T2):
+        self.T1 = T1
+        self.T2 = T2
+        
+    def evaluate(self, x):
+        return self.T1.evaluate(x) or self.T2.evaluate(x)
 #======================
 # Filtering
 #======================
@@ -200,7 +263,13 @@ def filter_stories(stories, triggerlist):
     # TODO: Problem 10
     # This is a placeholder
     # (we're just returning all the stories, with no filtering)
-    return stories
+    output = []
+    for story in stories:
+        for T in triggerlist:
+            if T.evaluate(story):
+                output.append(story)
+                break
+    return output
 
 
 
@@ -229,7 +298,45 @@ def read_trigger_config(filename):
     # to build triggers
 
     print(lines) # for now, print it so you see what it contains!
-
+    trigger_list = []
+    created_triggers = {}
+    for line in lines:
+        params = line.split(",")
+        print(params)
+        cmd = params[0]
+        
+        match cmd:
+            case "ADD":
+                for trigger in params[1:]:
+                    print("ading:", trigger)
+                    trigger_list.append(created_triggers[trigger])
+                
+            case _: # create trigger tx
+                create_trigger_name = cmd
+                trigger_type = params[1] 
+                arg1= params[2]
+                
+                match trigger_type:
+                    case "TITLE":
+                        created_trigger = TitleTrigger(arg1)
+                    case "DESCRIPTION":
+                        created_trigger = DescriptionTrigger(arg1)
+                    case "AFTER":
+                        created_trigger = AfterTrigger(arg1)
+                    case "BEFORE":
+                        created_trigger = BeforeTrigger(arg1)
+                    case "NOT":
+                        created_trigger = NotTrigger(created_triggers[arg1])   # arg1 itself is another Trigger
+                    case "AND":
+                        created_trigger = AndTrigger(created_triggers[arg1], created_triggers[params[3]])
+                    case "OR":
+                        created_trigger = OrTrigger(created_triggers[arg1], created_triggers[params[3]])
+                    case _:
+                        raise ValueError(f"Unknown trigger type: {trigger_type}")
+        
+                created_triggers[create_trigger_name] = created_trigger
+                
+    return trigger_list 
 
 
 SLEEPTIME = 120 #seconds -- how often we poll
@@ -243,11 +350,13 @@ def main_thread(master):
         t3 = DescriptionTrigger("Clinton")
         t4 = AndTrigger(t2, t3)
         triggerlist = [t1, t4]
+        print(triggerlist)
 
         # Problem 11
         # TODO: After implementing read_trigger_config, uncomment this line 
-        # triggerlist = read_trigger_config('triggers.txt')
-        
+        triggerlist = read_trigger_config('triggers.txt')
+        print(triggerlist)
+
         # HELPER CODE - you don't need to understand this!
         # Draws the popup window that displays the filtered stories
         # Retrieves and filters the stories from the RSS feeds

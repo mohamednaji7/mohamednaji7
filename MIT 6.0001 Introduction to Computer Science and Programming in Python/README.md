@@ -152,7 +152,7 @@ This problem set introduces object-oriented programming concepts through buildin
 🎓============================================================================🎓
 🎯 MIT 6.0001 Problem Set 5: RSS Feed Filter Test Suite 🎯
 🎓============================================================================🎓
-📅 Test Run: 2025-08-15 01:11:19
+📅 Test Run: 2025-08-19 11:30:11
 🔧 Debug Output: OFF | Test Details: ON
 🌟 Let's see how you're doing! 🌟
 
@@ -167,14 +167,14 @@ This problem set introduces object-oriented programming concepts through buildin
   testNewsStoryGetTitle (ps5_test.ProblemSet5NewsStory.testNewsStoryGetTitle) ✅
   testNewsStoryGetdescription (ps5_test.ProblemSet5NewsStory.testNewsStoryGetdescription) ✅
   test1TitleTrigger (ps5_test.ProblemSet5.test1TitleTrigger) ✅
-  test2DescriptionTrigger (ps5_test.ProblemSet5.test2DescriptionTrigger) ❌ ERROR
-  test3BeforeAndAfterTrigger (ps5_test.ProblemSet5.test3BeforeAndAfterTrigger) ❌ ERROR
-  test3altBeforeAndAfterTrigger (ps5_test.ProblemSet5.test3altBeforeAndAfterTrigger) ❌ ERROR
-  test4NotTrigger (ps5_test.ProblemSet5.test4NotTrigger) ❌ ERROR
-  test5AndTrigger (ps5_test.ProblemSet5.test5AndTrigger) ❌ ERROR
-  test6OrTrigger (ps5_test.ProblemSet5.test6OrTrigger) ❌ ERROR
-  test7FilterStories (ps5_test.ProblemSet5.test7FilterStories) ❌ ERROR
-  test8FilterStories2 (ps5_test.ProblemSet5.test8FilterStories2) ❌ FAILED
+  test2DescriptionTrigger (ps5_test.ProblemSet5.test2DescriptionTrigger) ✅
+  test3BeforeAndAfterTrigger (ps5_test.ProblemSet5.test3BeforeAndAfterTrigger) ✅
+  test3altBeforeAndAfterTrigger (ps5_test.ProblemSet5.test3altBeforeAndAfterTrigger) ✅
+  test4NotTrigger (ps5_test.ProblemSet5.test4NotTrigger) ✅
+  test5AndTrigger (ps5_test.ProblemSet5.test5AndTrigger) ✅
+  test6OrTrigger (ps5_test.ProblemSet5.test6OrTrigger) ✅
+  test7FilterStories (ps5_test.ProblemSet5.test7FilterStories) ✅
+  test8FilterStories2 (ps5_test.ProblemSet5.test8FilterStories2) ✅
 
 
 🎉============================================================================🎉
@@ -182,20 +182,52 @@ This problem set introduces object-oriented programming concepts through buildin
 🎉============================================================================🎉
 ┌──────────────────────────────────────────────────┐
 │  📈 Total Tests:                              15 │
-│  ✅ Passed:                                   7 │
-│  ❌ Failed:                                   1 │
-│  💥 Errors:                                   7 │
+│  ✅ Passed:                                  15 │
+│  ❌ Failed:                                   0 │
+│  💥 Errors:                                   0 │
 └──────────────────────────────────────────────────┘
 
-💪 Progress: 46.7%
-[🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧🟧⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜]
+🎉 Progress: 100.0%
+[🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩]
 
-🔥 Getting started! Every expert was once a beginner! 🔥
+🎊 PERFECT SCORE! You're a coding wizard! 🧙‍♂️✨
 
-⚡ Tests completed in 0.03 seconds
+⚡ Tests completed in 0.00 seconds
 💡 Run with --debug to see detailed debug output
 🎓============================================================================🎓
 
-💪 Keep coding! Use the error details above to fix issues! 💪
+🏆 All tests passed! You're ready for the next challenge! 🏆
 ➜  PS5 git:(main) ✗ 
 ```
+<details>
+<summary>click to see the offical tester (ps5_test.py) prints</summary>
+
+```bash  
+/home/mohamed/work/mohamednaji7/MIT 6.0001 Introduction to Computer Science and Programming in Python/PS5/ps5_test.py:249: DeprecationWarning: unittest.makeSuite() is deprecated and will be removed in Python 3.13. Please use unittest.TestLoader.loadTestsFromTestCase() instead.
+  suite.addTest(unittest.makeSuite(ProblemSet5NewsStory))
+/home/mohamed/work/mohamednaji7/MIT 6.0001 Introduction to Computer Science and Programming in Python/PS5/ps5_test.py:250: DeprecationWarning: unittest.makeSuite() is deprecated and will be removed in Python 3.13. Please use unittest.TestLoader.loadTestsFromTestCase() instead.
+  suite.addTest(unittest.makeSuite(ProblemSet5))
+testNewsStoryConstructor (__main__.ProblemSet5NewsStory.testNewsStoryConstructor) ... ok
+testNewsStoryGetGuid (__main__.ProblemSet5NewsStory.testNewsStoryGetGuid) ... ok
+testNewsStoryGetLink (__main__.ProblemSet5NewsStory.testNewsStoryGetLink) ... ok
+testNewsStoryGetTime (__main__.ProblemSet5NewsStory.testNewsStoryGetTime) ... ok
+testNewsStoryGetTitle (__main__.ProblemSet5NewsStory.testNewsStoryGetTitle) ... ok
+testNewsStoryGetdescription (__main__.ProblemSet5NewsStory.testNewsStoryGetdescription) ... ok
+test1TitleTrigger (__main__.ProblemSet5.test1TitleTrigger) ... ok
+test2DescriptionTrigger (__main__.ProblemSet5.test2DescriptionTrigger) ... ok
+test3BeforeAndAfterTrigger (__main__.ProblemSet5.test3BeforeAndAfterTrigger) ... ok
+test3altBeforeAndAfterTrigger (__main__.ProblemSet5.test3altBeforeAndAfterTrigger) ... ok
+test4NotTrigger (__main__.ProblemSet5.test4NotTrigger) ... ok
+test5AndTrigger (__main__.ProblemSet5.test5AndTrigger) ... ok
+test6OrTrigger (__main__.ProblemSet5.test6OrTrigger) ... ok
+test7FilterStories (__main__.ProblemSet5.test7FilterStories) ... ok
+test8FilterStories2 (__main__.ProblemSet5.test8FilterStories2) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK
+➜  PS5 git:(main) ✗ 
+
+```
+</details>
