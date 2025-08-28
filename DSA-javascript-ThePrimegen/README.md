@@ -169,3 +169,9 @@ Ran all test suites matching /QuickSort.ts/i.
 ```
 
 </details>
+
+#  
+
+Typo: there is a typo in directory name    
+correct: DSA-javascript-ThePrimeagen   
+---------------------------------------------------^    
