@@ -70,6 +70,10 @@ Ran all test suites matching /LinearSearchList.ts/i.
 | Quick Sort | [QuickSort.ts](./kata-machine/src/day1/QuickSort.ts) | ✅ Passed | [QuickSort.ts](./kata-machine/src/__tests__/QuickSort.ts) |
 | Singly Linked List | [SinglyLinkedList.ts](./kata-machine/src/day1/SinglyLinkedList.ts) | ✅ Passed | [SinglyLinkedList.ts](./kata-machine/src/__tests__/SinglyLinkedList.ts) |
 | Doubly Linked List | [DoublyLinkedList.ts](./kata-machine/src/day1/DoublyLinkedList.ts) | ✅ Passed | [DoublyLinkedList.ts](./kata-machine/src/__tests__/DoublyLinkedList.ts) |
+| Binary Tree Pre Order Traversal | [BTPreOrder.ts](./kata-machine/src/day1/BTPreOrder.ts) | ✅ Passed | [BTPreOrder.ts](./kata-machine/src/__tests__/BTPreOrder.ts) |
+| Binary Tree In Order Traversal | [BTInOrder.ts](./kata-machine/src/day1/BTInOrder.ts) | ✅ Passed | [BTInOrder.ts](./kata-machine/src/__tests__/BTInOrder.ts) |
+| Binary Tree Post Order Traversal | [BTPostOrder.ts](./kata-machine/src/day1/BTPostOrder.ts) | ✅ Passed | [BTPostOrder.ts](./kata-machine/src/__tests__/BTPostOrder.ts) |
+| Compare Two Binary Tree | [CompareBinaryTrees.ts](./kata-machine/src/day1/CompareBinaryTrees.ts) | ✅ Passed | [CompareBinaryTrees.ts](./kata-machine/src/__tests__/CompareBinaryTrees.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -191,7 +195,22 @@ Time:        0.975 s
 Ran all test suites matching /DoublyLinkedList.ts/i.
 ➜  kata-machine git:(main) ✗ 
 ```
+### Binary Tree
+```bash
+➜  kata-machine git:(main) ✗ npx jest BT compare
+ PASS  src/__tests__/CompareBinaryTrees.ts
+ PASS  src/__tests__/BTBFS.ts
+ PASS  src/__tests__/BTPreOrder.ts
+ PASS  src/__tests__/BTInOrder.ts
+ PASS  src/__tests__/BTPostOrder.ts
 
+Test Suites: 5 passed, 5 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        4.01 s
+Ran all test suites matching /BT|compare/i.
+➜  kata-machine git:(main) ✗ 
+```
 </details>
 
 #  
