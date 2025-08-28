@@ -68,6 +68,8 @@ Ran all test suites matching /LinearSearchList.ts/i.
 | Stack | [Stack.ts](./kata-machine/src/day1/Stack.ts) | ✅ Passed | [Stack.ts](./kata-machine/src/__tests__/Stack.ts) |
 | Queue | [Queue.ts](./kata-machine/src/day1/Queue.ts) | ✅ Passed | [Queue.ts](./kata-machine/src/__tests__/Queue.ts) |
 | Quick Sort | [QuickSort.ts](./kata-machine/src/day1/QuickSort.ts) | ✅ Passed | [QuickSort.ts](./kata-machine/src/__tests__/QuickSort.ts) |
+| Singly Linked List | [SinglyLinkedList.ts](./kata-machine/src/day1/SinglyLinkedList.ts) | ✅ Passed | [SinglyLinkedList.ts](./kata-machine/src/__tests__/SinglyLinkedList.ts) |
+| Doubly Linked List | [DoublyLinkedList.ts](./kata-machine/src/day1/DoublyLinkedList.ts) | ✅ Passed | [DoublyLinkedList.ts](./kata-machine/src/__tests__/DoublyLinkedList.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -165,6 +167,28 @@ Tests:       7 passed, 7 total
 Snapshots:   0 total
 Time:        0.932 s, estimated 1 s
 Ran all test suites matching /QuickSort.ts/i.
+➜  kata-machine git:(main) ✗ 
+```
+### Linked List
+```bash
+
+ PASS  src/__tests__/SinglyLinkedList.ts
+  ✓ linked-list (68 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.917 s, estimated 1 s
+Ran all test suites matching /SinglyLinkedList.ts/i.
+➜  kata-machine git:(main) ✗ npx jest DoublyLinkedList.ts
+ PASS  src/__tests__/DoublyLinkedList.ts
+  ✓ DoublyLinkedList (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.975 s
+Ran all test suites matching /DoublyLinkedList.ts/i.
 ➜  kata-machine git:(main) ✗ 
 ```
 
