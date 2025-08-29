@@ -73,7 +73,8 @@ Ran all test suites matching /LinearSearchList.ts/i.
 | Binary Tree Pre Order Traversal | [BTPreOrder.ts](./kata-machine/src/day1/BTPreOrder.ts) | ✅ Passed | [BTPreOrder.ts](./kata-machine/src/__tests__/BTPreOrder.ts) |
 | Binary Tree In Order Traversal | [BTInOrder.ts](./kata-machine/src/day1/BTInOrder.ts) | ✅ Passed | [BTInOrder.ts](./kata-machine/src/__tests__/BTInOrder.ts) |
 | Binary Tree Post Order Traversal | [BTPostOrder.ts](./kata-machine/src/day1/BTPostOrder.ts) | ✅ Passed | [BTPostOrder.ts](./kata-machine/src/__tests__/BTPostOrder.ts) |
-| Compare Two Binary Tree | [CompareBinaryTrees.ts](./kata-machine/src/day1/CompareBinaryTrees.ts) | ✅ Passed | [CompareBinaryTrees.ts](./kata-machine/src/__tests__/CompareBinaryTrees.ts) |
+| Compare Two Binary Trees | [CompareBinaryTrees.ts](./kata-machine/src/day1/CompareBinaryTrees.ts) | ✅ Passed | [CompareBinaryTrees.ts](./kata-machine/src/__tests__/CompareBinaryTrees.ts) |
+| Depth First Search on Binary Tree  | [DFSOnBST.ts](./kata-machine/src/day1/DFSOnBST.ts) | ✅ Passed | [DFSOnBST.ts](./kata-machine/src/__tests__/DFSOnBST.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -209,6 +210,16 @@ Tests:       5 passed, 5 total
 Snapshots:   0 total
 Time:        4.01 s
 Ran all test suites matching /BT|compare/i.
+➜  kata-machine git:(main) ✗ 
+➜  kata-machine git:(main) ✗ npx jest BST 
+ PASS  src/__tests__/DFSOnBST.ts
+  ✓ DFS on BST (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.899 s, estimated 2 s
+Ran all test suites matching /BST/i.
 ➜  kata-machine git:(main) ✗ 
 ```
 </details>
