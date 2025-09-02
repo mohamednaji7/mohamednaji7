@@ -28,3 +28,37 @@ test("min heap", function () {
 });
 
 
+
+test("min heap: left child only", function () {
+    const heap = new MinHeap();
+
+    expect(heap.length).toEqual(0);
+
+    heap.insert(5);
+    heap.insert(3);
+
+    expect(heap.length).toEqual(2);
+    expect(heap.delete()).toEqual(3);
+    expect(heap.length).toEqual(1);
+    expect(heap.delete()).toEqual(5);
+    expect(heap.length).toEqual(0);
+});
+
+
+test("min heap: left child only when heapifyDown", function () {
+    const heap = new MinHeap();
+
+    expect(heap.length).toEqual(0);
+
+    heap.insert(1);
+    heap.insert(3);
+    heap.insert(2);
+
+    expect(heap.length).toEqual(3);
+    expect(heap.delete()).toEqual(1);
+    expect(heap.length).toEqual(2);
+    expect(heap.delete()).toEqual(2);
+    expect(heap.length).toEqual(1);
+    expect(heap.delete()).toEqual(3);
+    expect(heap.length).toEqual(0);
+});
