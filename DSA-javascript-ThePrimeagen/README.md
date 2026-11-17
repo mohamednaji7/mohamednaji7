@@ -223,9 +223,3 @@ Ran all test suites matching /BST/i.
 ➜  kata-machine git:(main) ✗ 
 ```
 </details>
-
-#  
-
-Typo: there is a typo in directory name    
-correct: DSA-javascript-ThePrimeagen   
----------------------------------------------------^    
