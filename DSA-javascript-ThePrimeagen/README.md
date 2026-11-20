@@ -20,6 +20,7 @@ Algorithms course by **ThePrimeagen**. using typescript   <img src="https://go-s
 
 * [Course Page on Frontend Masters](https://frontendmasters.com/courses/algorithms/)
 * [Course Notes & Resources](https://theprimeagen.github.io/fem-algos)
+* [Course Problems](https://github.com/ThePrimeagen/kata-machine)
 
 ---
 
@@ -75,6 +76,8 @@ Ran all test suites matching /LinearSearchList.ts/i.
 | Binary Tree Post Order Traversal | [BTPostOrder.ts](./kata-machine/src/day1/BTPostOrder.ts) | ✅ Passed | [BTPostOrder.ts](./kata-machine/src/__tests__/BTPostOrder.ts) |
 | Compare Two Binary Trees | [CompareBinaryTrees.ts](./kata-machine/src/day1/CompareBinaryTrees.ts) | ✅ Passed | [CompareBinaryTrees.ts](./kata-machine/src/__tests__/CompareBinaryTrees.ts) |
 | Depth First Search on Binary Tree  | [DFSOnBST.ts](./kata-machine/src/day1/DFSOnBST.ts) | ✅ Passed | [DFSOnBST.ts](./kata-machine/src/__tests__/DFSOnBST.ts) |
+| Heap Tree  | [MinHeap.ts](./kata-machine/src/day1/MinHeap.ts) | ✅ Passed | [MinHeap.ts](./kata-machine/src/__tests__/MinHeap.ts) |
+| Trie Tree  | [Trie.ts](./kata-machine/src/day1/Trie.ts) | ✅ Passed | [Trie.ts](./kata-machine/src/__tests__/Trie.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -221,5 +224,33 @@ Snapshots:   0 total
 Time:        0.899 s, estimated 2 s
 Ran all test suites matching /BST/i.
 ➜  kata-machine git:(main) ✗ 
+```
+### Heap
+```bash
+❯ npx jest Heap
+ PASS  src/__tests__/MinHeap.ts
+  ✓ min heap (5 ms)
+  ✓ min heap: left child only (1 ms)
+  ✓ min heap: left child only when heapifyDown (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        1.766 s
+Ran all test suites matching /Heap/i.
+```
+### Trie Tree
+```bash
+
+❯ npx jest Trie
+ PASS  src/__tests__/Trie.ts
+  ✓ Trie (2 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.054 s, estimated 2 s
+Ran all test suites matching /Trie/i.
+ ~/work/mohamednaji7/DSA-javascript-ThePrimeagen/kata-machine │ main !3  
 ```
 </details>
