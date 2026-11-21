@@ -78,6 +78,8 @@ Ran all test suites matching /LinearSearchList.ts/i.
 | Depth First Search on Binary Tree  | [DFSOnBST.ts](./kata-machine/src/day1/DFSOnBST.ts) | ✅ Passed | [DFSOnBST.ts](./kata-machine/src/__tests__/DFSOnBST.ts) |
 | Heap Tree  | [MinHeap.ts](./kata-machine/src/day1/MinHeap.ts) | ✅ Passed | [MinHeap.ts](./kata-machine/src/__tests__/MinHeap.ts) |
 | Trie Tree  | [Trie.ts](./kata-machine/src/day1/Trie.ts) | ✅ Passed | [Trie.ts](./kata-machine/src/__tests__/Trie.ts) |
+| BFS on Graph(WeightedAdjacencyMatrix) | [BFSGraphMatrix.ts](./kata-machine/src/day1/BFSGraphMatrix.ts) | ✅ Passed | [BFSGraphMatrix.ts](./kata-machine/src/__tests__/BFSGraphMatrix.ts) |
+| DFS on Graph(WeightedAdjacencyList) | [DFSGraphList.ts](./kata-machine/src/day1/DFSGraphList.ts) | ✅ Passed | [DFSGraphList.ts](./kata-machine/src/__tests__/DFSGraphList.ts) |
 
 <details>
 <summary>📊 Detailed Test Results</summary>
@@ -252,5 +254,30 @@ Snapshots:   0 total
 Time:        1.054 s, estimated 2 s
 Ran all test suites matching /Trie/i.
  ~/work/mohamednaji7/DSA-javascript-ThePrimeagen/kata-machine │ main !3  
+```
+### DFS, and BFS on Graphs
+```bash
+❯ npx jest BFSGraphMatrix
+ PASS  src/__tests__/BFSGraphMatrix.ts
+  ✓ bfs - graph matrix (4 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.421 s, estimated 2 s
+Ran all test suites matching /BFSGraphMatrix/i.
+❯ npx jest DFSGraphL
+ PASS  src/__tests__/DFSGraphList.ts
+  ✓ DFS - Graph: 2 nodes (3 ms)
+  ✓ DFS - Graph: 3 nodes (1 ms)
+  ✓ DFS - Graph: 4 nodes (1 ms)
+  ✓ dfs - graph (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        2.036 s
+Ran all test suites matching /DFSGraphL/i.
+❯ 
 ```
 </details>
